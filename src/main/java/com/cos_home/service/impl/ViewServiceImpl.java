@@ -32,6 +32,8 @@ public class ViewServiceImpl implements ViewService {
 			criteria2.andViewSpotLike('%'+str+'%');
 		}
 		criteria.andViewIsDelEqualTo(0);
+		criteria2.andViewIsDelEqualTo(0);
+		example.or(criteria2);
 		example.setLimitStart(PageUtil.startNo(pageIndex, pageSize));
 		example.setLimitEnd(pageSize);
 		return viewMapper.selectByExample(example);

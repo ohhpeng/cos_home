@@ -18,8 +18,6 @@ import com.cos_home.entity.View;
 import com.cos_home.service.ViewService;
 import com.cos_home.util.ListPaginationUtil;
 
-
-
 @Controller
 @Scope("prototype")
 @RequestMapping("coshome/view")
