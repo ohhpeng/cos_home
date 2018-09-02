@@ -1,0 +1,307 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.cos_home.mapper.DiscussMapper" >
+
+    <resultMap id="BaseResultMap" type="com.cos_home.entity.Discuss" >
+        <!--
+        @mbggenerated
+        -->
+        <id column="discuss_id" property="discussId" jdbcType="BIGINT" />
+        <result column="discuss_user_id" property="discussUserId" jdbcType="BIGINT" />
+        <result column="discuss_name" property="discussName" jdbcType="VARCHAR" />
+        <result column="discuss_content" property="discussContent" jdbcType="VARCHAR" />
+        <result column="discuss_createtime" property="discussCreatetime" jdbcType="TIMESTAMP" />
+        <result column="discuss_image_url" property="discussImageUrl" jdbcType="VARCHAR" />
+        <result column="discuss_lable_id" property="discussLableId" jdbcType="BIGINT" />
+    </resultMap>
+
+    <sql id="Example_Where_Clause" >
+        <!--
+        @mbggenerated
+        -->
+        <where >
+            <foreach collection="oredCriteria" item="criteria" separator="or" >
+                <if test="criteria.valid" >
+                    <trim prefix="(" suffix=")" prefixOverrides="and" >
+                        <foreach collection="criteria.criteria" item="criterion" >
+                            <choose >
+                                <when test="criterion.noValue" >
+                                    and ${criterion.condition}
+                                </when>
+                                <when test="criterion.singleValue" >
+                                    and ${criterion.condition} #{criterion.value}
+                                </when>
+                                <when test="criterion.betweenValue" >
+                                    and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                                </when>
+                                <when test="criterion.listValue" >
+                                    and ${criterion.condition}
+                                    <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                                        #{listItem}
+                                    </foreach>
+                                </when>
+                            </choose>
+                        </foreach>
+                    </trim>
+                </if>
+            </foreach>
+        </where>
+    </sql>
+
+    <sql id="Update_By_Example_Where_Clause" >
+        <!--
+        @mbggenerated
+        -->
+        <where >
+            <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+                <if test="criteria.valid" >
+                    <trim prefix="(" suffix=")" prefixOverrides="and" >
+                        <foreach collection="criteria.criteria" item="criterion" >
+                            <choose >
+                                <when test="criterion.noValue" >
+                                    and ${criterion.condition}
+                                </when>
+                                <when test="criterion.singleValue" >
+                                    and ${criterion.condition} #{criterion.value}
+                                </when>
+                                <when test="criterion.betweenValue" >
+                                    and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                                </when>
+                                <when test="criterion.listValue" >
+                                    and ${criterion.condition}
+                                    <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                                        #{listItem}
+                                    </foreach>
+                                </when>
+                            </choose>
+                        </foreach>
+                    </trim>
+                </if>
+            </foreach>
+        </where>
+    </sql>
+
+    <sql id="Base_Column_List" >
+        <!--
+        @mbggenerated
+        -->
+        discuss_id, discuss_user_id, discuss_name, discuss_content, discuss_createtime, discuss_image_url, 
+        discuss_lable_id
+    </sql>
+
+    <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.cos_home.entity.DiscussExample" >
+        <!--
+        @mbggenerated
+        -->
+        select
+        <if test="distinct" >
+            distinct
+        </if>
+        <include refid="Base_Column_List" />
+        from discuss
+        <if test="_parameter != null" >
+            <include refid="Example_Where_Clause" />
+        </if>
+        <if test="orderByClause != null" >
+            order by ${orderByClause}
+        </if>
+        <if test="limitStart != null and limitStart>=0" >
+            limit #{limitStart} , #{limitEnd}
+        </if>
+    </select>
+
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+        <!--
+        @mbggenerated
+        -->
+        select 
+        <include refid="Base_Column_List" />
+        from discuss
+        where discuss_id = #{discussId,jdbcType=BIGINT}
+    </select>
+
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+        <!--
+        @mbggenerated
+        -->
+        delete from discuss
+        where discuss_id = #{discussId,jdbcType=BIGINT}
+    </delete>
+
+    <delete id="deleteByExample" parameterType="com.cos_home.entity.DiscussExample" >
+        <!--
+        @mbggenerated
+        -->
+        delete from discuss
+        <if test="_parameter != null" >
+            <include refid="Example_Where_Clause" />
+        </if>
+    </delete>
+
+    <insert id="insert" parameterType="com.cos_home.entity.Discuss" >
+        <!--
+        @mbggenerated
+        -->
+        insert into discuss (discuss_id, discuss_user_id, discuss_name, 
+            discuss_content, discuss_createtime, 
+            discuss_image_url, discuss_lable_id)
+        values (#{discussId,jdbcType=BIGINT}, #{discussUserId,jdbcType=BIGINT}, #{discussName,jdbcType=VARCHAR}, 
+            #{discussContent,jdbcType=VARCHAR}, #{discussCreatetime,jdbcType=TIMESTAMP}, 
+            #{discussImageUrl,jdbcType=VARCHAR}, #{discussLableId,jdbcType=BIGINT})
+    </insert>
+
+    <insert id="insertSelective" parameterType="com.cos_home.entity.Discuss" >
+        <!--
+        @mbggenerated
+        -->
+        insert into discuss
+        <trim prefix="(" suffix=")" suffixOverrides="," >
+            <if test="discussId != null" >
+                discuss_id,
+            </if>
+            <if test="discussUserId != null" >
+                discuss_user_id,
+            </if>
+            <if test="discussName != null" >
+                discuss_name,
+            </if>
+            <if test="discussContent != null" >
+                discuss_content,
+            </if>
+            <if test="discussCreatetime != null" >
+                discuss_createtime,
+            </if>
+            <if test="discussImageUrl != null" >
+                discuss_image_url,
+            </if>
+            <if test="discussLableId != null" >
+                discuss_lable_id,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides="," >
+            <if test="discussId != null" >
+                #{discussId,jdbcType=BIGINT},
+            </if>
+            <if test="discussUserId != null" >
+                #{discussUserId,jdbcType=BIGINT},
+            </if>
+            <if test="discussName != null" >
+                #{discussName,jdbcType=VARCHAR},
+            </if>
+            <if test="discussContent != null" >
+                #{discussContent,jdbcType=VARCHAR},
+            </if>
+            <if test="discussCreatetime != null" >
+                #{discussCreatetime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="discussImageUrl != null" >
+                #{discussImageUrl,jdbcType=VARCHAR},
+            </if>
+            <if test="discussLableId != null" >
+                #{discussLableId,jdbcType=BIGINT},
+            </if>
+        </trim>
+    </insert>
+
+    <select id="countByExample" parameterType="com.cos_home.entity.DiscussExample" resultType="java.lang.Integer" >
+        <!--
+        @mbggenerated
+        -->
+        select count(*) from discuss
+        <if test="_parameter != null" >
+            <include refid="Example_Where_Clause" />
+        </if>
+    </select>
+
+    <update id="updateByExampleSelective" parameterType="map" >
+        <!--
+        @mbggenerated
+        -->
+        update discuss
+        <set >
+            <if test="record.discussId != null" >
+                discuss_id = #{record.discussId,jdbcType=BIGINT},
+            </if>
+            <if test="record.discussUserId != null" >
+                discuss_user_id = #{record.discussUserId,jdbcType=BIGINT},
+            </if>
+            <if test="record.discussName != null" >
+                discuss_name = #{record.discussName,jdbcType=VARCHAR},
+            </if>
+            <if test="record.discussContent != null" >
+                discuss_content = #{record.discussContent,jdbcType=VARCHAR},
+            </if>
+            <if test="record.discussCreatetime != null" >
+                discuss_createtime = #{record.discussCreatetime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="record.discussImageUrl != null" >
+                discuss_image_url = #{record.discussImageUrl,jdbcType=VARCHAR},
+            </if>
+            <if test="record.discussLableId != null" >
+                discuss_lable_id = #{record.discussLableId,jdbcType=BIGINT},
+            </if>
+        </set>
+        <if test="_parameter != null" >
+            <include refid="Update_By_Example_Where_Clause" />
+        </if>
+    </update>
+
+    <update id="updateByExample" parameterType="map" >
+        <!--
+        @mbggenerated
+        -->
+        update discuss
+        set discuss_id = #{record.discussId,jdbcType=BIGINT},
+            discuss_user_id = #{record.discussUserId,jdbcType=BIGINT},
+            discuss_name = #{record.discussName,jdbcType=VARCHAR},
+            discuss_content = #{record.discussContent,jdbcType=VARCHAR},
+            discuss_createtime = #{record.discussCreatetime,jdbcType=TIMESTAMP},
+            discuss_image_url = #{record.discussImageUrl,jdbcType=VARCHAR},
+            discuss_lable_id = #{record.discussLableId,jdbcType=BIGINT}
+        <if test="_parameter != null" >
+            <include refid="Update_By_Example_Where_Clause" />
+        </if>
+    </update>
+
+    <update id="updateByPrimaryKeySelective" parameterType="com.cos_home.entity.Discuss" >
+        <!--
+        @mbggenerated
+        -->
+        update discuss
+        <set >
+            <if test="discussUserId != null" >
+                discuss_user_id = #{discussUserId,jdbcType=BIGINT},
+            </if>
+            <if test="discussName != null" >
+                discuss_name = #{discussName,jdbcType=VARCHAR},
+            </if>
+            <if test="discussContent != null" >
+                discuss_content = #{discussContent,jdbcType=VARCHAR},
+            </if>
+            <if test="discussCreatetime != null" >
+                discuss_createtime = #{discussCreatetime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="discussImageUrl != null" >
+                discuss_image_url = #{discussImageUrl,jdbcType=VARCHAR},
+            </if>
+            <if test="discussLableId != null" >
+                discuss_lable_id = #{discussLableId,jdbcType=BIGINT},
+            </if>
+        </set>
+        where discuss_id = #{discussId,jdbcType=BIGINT}
+    </update>
+
+    <update id="updateByPrimaryKey" parameterType="com.cos_home.entity.Discuss" >
+        <!--
+        @mbggenerated
+        -->
+        update discuss
+        set discuss_user_id = #{discussUserId,jdbcType=BIGINT},
+            discuss_name = #{discussName,jdbcType=VARCHAR},
+            discuss_content = #{discussContent,jdbcType=VARCHAR},
+            discuss_createtime = #{discussCreatetime,jdbcType=TIMESTAMP},
+            discuss_image_url = #{discussImageUrl,jdbcType=VARCHAR},
+            discuss_lable_id = #{discussLableId,jdbcType=BIGINT}
+        where discuss_id = #{discussId,jdbcType=BIGINT}
+    </update>
+</mapper>

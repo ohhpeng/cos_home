@@ -1,0 +1,402 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.cos_home.mapper.EvaluateMapper" >
+
+    <resultMap id="BaseResultMap" type="com.cos_home.entity.Evaluate" >
+        <!--
+        @mbggenerated
+        -->
+        <id column="evaluate_id" property="evaluateId" jdbcType="BIGINT" />
+        <result column="evaluate_user_id" property="evaluateUserId" jdbcType="BIGINT" />
+        <result column="evaluate_content" property="evaluateContent" jdbcType="VARCHAR" />
+        <result column="evaluate_time" property="evaluateTime" jdbcType="TIMESTAMP" />
+        <result column="evaluate_works_id" property="evaluateWorksId" jdbcType="BIGINT" />
+        <result column="evaluate_view_id" property="evaluateViewId" jdbcType="BIGINT" />
+        <result column="evaluate_dynamic_id" property="evaluateDynamicId" jdbcType="BIGINT" />
+        <result column="evaluate_discuss_id" property="evaluateDiscussId" jdbcType="BIGINT" />
+        <result column="evaluate_activity_id" property="evaluateActivityId" jdbcType="BIGINT" />
+        <result column="evaluate_order_id" property="evaluateOrderId" jdbcType="BIGINT" />
+        <result column="evaluate_target_id" property="evaluateTargetId" jdbcType="BIGINT" />
+        <result column="evaluate_user_name" property="evaluateUserName" jdbcType="VARCHAR" />
+        <result column="evaluate_user_headThumb" property="evaluateUserHeadthumb" jdbcType="VARCHAR" />
+    </resultMap>
+
+    <sql id="Example_Where_Clause" >
+        <!--
+        @mbggenerated
+        -->
+        <where >
+            <foreach collection="oredCriteria" item="criteria" separator="or" >
+                <if test="criteria.valid" >
+                    <trim prefix="(" suffix=")" prefixOverrides="and" >
+                        <foreach collection="criteria.criteria" item="criterion" >
+                            <choose >
+                                <when test="criterion.noValue" >
+                                    and ${criterion.condition}
+                                </when>
+                                <when test="criterion.singleValue" >
+                                    and ${criterion.condition} #{criterion.value}
+                                </when>
+                                <when test="criterion.betweenValue" >
+                                    and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                                </when>
+                                <when test="criterion.listValue" >
+                                    and ${criterion.condition}
+                                    <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                                        #{listItem}
+                                    </foreach>
+                                </when>
+                            </choose>
+                        </foreach>
+                    </trim>
+                </if>
+            </foreach>
+        </where>
+    </sql>
+
+    <sql id="Update_By_Example_Where_Clause" >
+        <!--
+        @mbggenerated
+        -->
+        <where >
+            <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+                <if test="criteria.valid" >
+                    <trim prefix="(" suffix=")" prefixOverrides="and" >
+                        <foreach collection="criteria.criteria" item="criterion" >
+                            <choose >
+                                <when test="criterion.noValue" >
+                                    and ${criterion.condition}
+                                </when>
+                                <when test="criterion.singleValue" >
+                                    and ${criterion.condition} #{criterion.value}
+                                </when>
+                                <when test="criterion.betweenValue" >
+                                    and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                                </when>
+                                <when test="criterion.listValue" >
+                                    and ${criterion.condition}
+                                    <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                                        #{listItem}
+                                    </foreach>
+                                </when>
+                            </choose>
+                        </foreach>
+                    </trim>
+                </if>
+            </foreach>
+        </where>
+    </sql>
+
+    <sql id="Base_Column_List" >
+        <!--
+        @mbggenerated
+        -->
+        evaluate_id, evaluate_user_id, evaluate_content, evaluate_time, evaluate_works_id, 
+        evaluate_view_id, evaluate_dynamic_id, evaluate_discuss_id, evaluate_activity_id, 
+        evaluate_order_id, evaluate_target_id, evaluate_user_name, evaluate_user_headThumb
+    </sql>
+
+    <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.cos_home.entity.EvaluateExample" >
+        <!--
+        @mbggenerated
+        -->
+        select
+        <if test="distinct" >
+            distinct
+        </if>
+        <include refid="Base_Column_List" />
+        from evaluate
+        <if test="_parameter != null" >
+            <include refid="Example_Where_Clause" />
+        </if>
+        <if test="orderByClause != null" >
+            order by ${orderByClause}
+        </if>
+        <if test="limitStart != null and limitStart>=0" >
+            limit #{limitStart} , #{limitEnd}
+        </if>
+    </select>
+
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+        <!--
+        @mbggenerated
+        -->
+        select 
+        <include refid="Base_Column_List" />
+        from evaluate
+        where evaluate_id = #{evaluateId,jdbcType=BIGINT}
+    </select>
+
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+        <!--
+        @mbggenerated
+        -->
+        delete from evaluate
+        where evaluate_id = #{evaluateId,jdbcType=BIGINT}
+    </delete>
+
+    <delete id="deleteByExample" parameterType="com.cos_home.entity.EvaluateExample" >
+        <!--
+        @mbggenerated
+        -->
+        delete from evaluate
+        <if test="_parameter != null" >
+            <include refid="Example_Where_Clause" />
+        </if>
+    </delete>
+
+    <insert id="insert" parameterType="com.cos_home.entity.Evaluate" >
+        <!--
+        @mbggenerated
+        -->
+        insert into evaluate (evaluate_id, evaluate_user_id, evaluate_content, 
+            evaluate_time, evaluate_works_id, evaluate_view_id, 
+            evaluate_dynamic_id, evaluate_discuss_id, evaluate_activity_id, 
+            evaluate_order_id, evaluate_target_id, evaluate_user_name, 
+            evaluate_user_headThumb)
+        values (#{evaluateId,jdbcType=BIGINT}, #{evaluateUserId,jdbcType=BIGINT}, #{evaluateContent,jdbcType=VARCHAR}, 
+            #{evaluateTime,jdbcType=TIMESTAMP}, #{evaluateWorksId,jdbcType=BIGINT}, #{evaluateViewId,jdbcType=BIGINT}, 
+            #{evaluateDynamicId,jdbcType=BIGINT}, #{evaluateDiscussId,jdbcType=BIGINT}, #{evaluateActivityId,jdbcType=BIGINT}, 
+            #{evaluateOrderId,jdbcType=BIGINT}, #{evaluateTargetId,jdbcType=BIGINT}, #{evaluateUserName,jdbcType=VARCHAR}, 
+            #{evaluateUserHeadthumb,jdbcType=VARCHAR})
+    </insert>
+
+    <insert id="insertSelective" parameterType="com.cos_home.entity.Evaluate" >
+        <!--
+        @mbggenerated
+        -->
+        insert into evaluate
+        <trim prefix="(" suffix=")" suffixOverrides="," >
+            <if test="evaluateId != null" >
+                evaluate_id,
+            </if>
+            <if test="evaluateUserId != null" >
+                evaluate_user_id,
+            </if>
+            <if test="evaluateContent != null" >
+                evaluate_content,
+            </if>
+            <if test="evaluateTime != null" >
+                evaluate_time,
+            </if>
+            <if test="evaluateWorksId != null" >
+                evaluate_works_id,
+            </if>
+            <if test="evaluateViewId != null" >
+                evaluate_view_id,
+            </if>
+            <if test="evaluateDynamicId != null" >
+                evaluate_dynamic_id,
+            </if>
+            <if test="evaluateDiscussId != null" >
+                evaluate_discuss_id,
+            </if>
+            <if test="evaluateActivityId != null" >
+                evaluate_activity_id,
+            </if>
+            <if test="evaluateOrderId != null" >
+                evaluate_order_id,
+            </if>
+            <if test="evaluateTargetId != null" >
+                evaluate_target_id,
+            </if>
+            <if test="evaluateUserName != null" >
+                evaluate_user_name,
+            </if>
+            <if test="evaluateUserHeadthumb != null" >
+                evaluate_user_headThumb,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides="," >
+            <if test="evaluateId != null" >
+                #{evaluateId,jdbcType=BIGINT},
+            </if>
+            <if test="evaluateUserId != null" >
+                #{evaluateUserId,jdbcType=BIGINT},
+            </if>
+            <if test="evaluateContent != null" >
+                #{evaluateContent,jdbcType=VARCHAR},
+            </if>
+            <if test="evaluateTime != null" >
+                #{evaluateTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="evaluateWorksId != null" >
+                #{evaluateWorksId,jdbcType=BIGINT},
+            </if>
+            <if test="evaluateViewId != null" >
+                #{evaluateViewId,jdbcType=BIGINT},
+            </if>
+            <if test="evaluateDynamicId != null" >
+                #{evaluateDynamicId,jdbcType=BIGINT},
+            </if>
+            <if test="evaluateDiscussId != null" >
+                #{evaluateDiscussId,jdbcType=BIGINT},
+            </if>
+            <if test="evaluateActivityId != null" >
+                #{evaluateActivityId,jdbcType=BIGINT},
+            </if>
+            <if test="evaluateOrderId != null" >
+                #{evaluateOrderId,jdbcType=BIGINT},
+            </if>
+            <if test="evaluateTargetId != null" >
+                #{evaluateTargetId,jdbcType=BIGINT},
+            </if>
+            <if test="evaluateUserName != null" >
+                #{evaluateUserName,jdbcType=VARCHAR},
+            </if>
+            <if test="evaluateUserHeadthumb != null" >
+                #{evaluateUserHeadthumb,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+
+    <select id="countByExample" parameterType="com.cos_home.entity.EvaluateExample" resultType="java.lang.Integer" >
+        <!--
+        @mbggenerated
+        -->
+        select count(*) from evaluate
+        <if test="_parameter != null" >
+            <include refid="Example_Where_Clause" />
+        </if>
+    </select>
+
+    <update id="updateByExampleSelective" parameterType="map" >
+        <!--
+        @mbggenerated
+        -->
+        update evaluate
+        <set >
+            <if test="record.evaluateId != null" >
+                evaluate_id = #{record.evaluateId,jdbcType=BIGINT},
+            </if>
+            <if test="record.evaluateUserId != null" >
+                evaluate_user_id = #{record.evaluateUserId,jdbcType=BIGINT},
+            </if>
+            <if test="record.evaluateContent != null" >
+                evaluate_content = #{record.evaluateContent,jdbcType=VARCHAR},
+            </if>
+            <if test="record.evaluateTime != null" >
+                evaluate_time = #{record.evaluateTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="record.evaluateWorksId != null" >
+                evaluate_works_id = #{record.evaluateWorksId,jdbcType=BIGINT},
+            </if>
+            <if test="record.evaluateViewId != null" >
+                evaluate_view_id = #{record.evaluateViewId,jdbcType=BIGINT},
+            </if>
+            <if test="record.evaluateDynamicId != null" >
+                evaluate_dynamic_id = #{record.evaluateDynamicId,jdbcType=BIGINT},
+            </if>
+            <if test="record.evaluateDiscussId != null" >
+                evaluate_discuss_id = #{record.evaluateDiscussId,jdbcType=BIGINT},
+            </if>
+            <if test="record.evaluateActivityId != null" >
+                evaluate_activity_id = #{record.evaluateActivityId,jdbcType=BIGINT},
+            </if>
+            <if test="record.evaluateOrderId != null" >
+                evaluate_order_id = #{record.evaluateOrderId,jdbcType=BIGINT},
+            </if>
+            <if test="record.evaluateTargetId != null" >
+                evaluate_target_id = #{record.evaluateTargetId,jdbcType=BIGINT},
+            </if>
+            <if test="record.evaluateUserName != null" >
+                evaluate_user_name = #{record.evaluateUserName,jdbcType=VARCHAR},
+            </if>
+            <if test="record.evaluateUserHeadthumb != null" >
+                evaluate_user_headThumb = #{record.evaluateUserHeadthumb,jdbcType=VARCHAR},
+            </if>
+        </set>
+        <if test="_parameter != null" >
+            <include refid="Update_By_Example_Where_Clause" />
+        </if>
+    </update>
+
+    <update id="updateByExample" parameterType="map" >
+        <!--
+        @mbggenerated
+        -->
+        update evaluate
+        set evaluate_id = #{record.evaluateId,jdbcType=BIGINT},
+            evaluate_user_id = #{record.evaluateUserId,jdbcType=BIGINT},
+            evaluate_content = #{record.evaluateContent,jdbcType=VARCHAR},
+            evaluate_time = #{record.evaluateTime,jdbcType=TIMESTAMP},
+            evaluate_works_id = #{record.evaluateWorksId,jdbcType=BIGINT},
+            evaluate_view_id = #{record.evaluateViewId,jdbcType=BIGINT},
+            evaluate_dynamic_id = #{record.evaluateDynamicId,jdbcType=BIGINT},
+            evaluate_discuss_id = #{record.evaluateDiscussId,jdbcType=BIGINT},
+            evaluate_activity_id = #{record.evaluateActivityId,jdbcType=BIGINT},
+            evaluate_order_id = #{record.evaluateOrderId,jdbcType=BIGINT},
+            evaluate_target_id = #{record.evaluateTargetId,jdbcType=BIGINT},
+            evaluate_user_name = #{record.evaluateUserName,jdbcType=VARCHAR},
+            evaluate_user_headThumb = #{record.evaluateUserHeadthumb,jdbcType=VARCHAR}
+        <if test="_parameter != null" >
+            <include refid="Update_By_Example_Where_Clause" />
+        </if>
+    </update>
+
+    <update id="updateByPrimaryKeySelective" parameterType="com.cos_home.entity.Evaluate" >
+        <!--
+        @mbggenerated
+        -->
+        update evaluate
+        <set >
+            <if test="evaluateUserId != null" >
+                evaluate_user_id = #{evaluateUserId,jdbcType=BIGINT},
+            </if>
+            <if test="evaluateContent != null" >
+                evaluate_content = #{evaluateContent,jdbcType=VARCHAR},
+            </if>
+            <if test="evaluateTime != null" >
+                evaluate_time = #{evaluateTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="evaluateWorksId != null" >
+                evaluate_works_id = #{evaluateWorksId,jdbcType=BIGINT},
+            </if>
+            <if test="evaluateViewId != null" >
+                evaluate_view_id = #{evaluateViewId,jdbcType=BIGINT},
+            </if>
+            <if test="evaluateDynamicId != null" >
+                evaluate_dynamic_id = #{evaluateDynamicId,jdbcType=BIGINT},
+            </if>
+            <if test="evaluateDiscussId != null" >
+                evaluate_discuss_id = #{evaluateDiscussId,jdbcType=BIGINT},
+            </if>
+            <if test="evaluateActivityId != null" >
+                evaluate_activity_id = #{evaluateActivityId,jdbcType=BIGINT},
+            </if>
+            <if test="evaluateOrderId != null" >
+                evaluate_order_id = #{evaluateOrderId,jdbcType=BIGINT},
+            </if>
+            <if test="evaluateTargetId != null" >
+                evaluate_target_id = #{evaluateTargetId,jdbcType=BIGINT},
+            </if>
+            <if test="evaluateUserName != null" >
+                evaluate_user_name = #{evaluateUserName,jdbcType=VARCHAR},
+            </if>
+            <if test="evaluateUserHeadthumb != null" >
+                evaluate_user_headThumb = #{evaluateUserHeadthumb,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where evaluate_id = #{evaluateId,jdbcType=BIGINT}
+    </update>
+
+    <update id="updateByPrimaryKey" parameterType="com.cos_home.entity.Evaluate" >
+        <!--
+        @mbggenerated
+        -->
+        update evaluate
+        set evaluate_user_id = #{evaluateUserId,jdbcType=BIGINT},
+            evaluate_content = #{evaluateContent,jdbcType=VARCHAR},
+            evaluate_time = #{evaluateTime,jdbcType=TIMESTAMP},
+            evaluate_works_id = #{evaluateWorksId,jdbcType=BIGINT},
+            evaluate_view_id = #{evaluateViewId,jdbcType=BIGINT},
+            evaluate_dynamic_id = #{evaluateDynamicId,jdbcType=BIGINT},
+            evaluate_discuss_id = #{evaluateDiscussId,jdbcType=BIGINT},
+            evaluate_activity_id = #{evaluateActivityId,jdbcType=BIGINT},
+            evaluate_order_id = #{evaluateOrderId,jdbcType=BIGINT},
+            evaluate_target_id = #{evaluateTargetId,jdbcType=BIGINT},
+            evaluate_user_name = #{evaluateUserName,jdbcType=VARCHAR},
+            evaluate_user_headThumb = #{evaluateUserHeadthumb,jdbcType=VARCHAR}
+        where evaluate_id = #{evaluateId,jdbcType=BIGINT}
+    </update>
+</mapper>

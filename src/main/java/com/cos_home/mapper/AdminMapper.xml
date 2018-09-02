@@ -1,0 +1,417 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.cos_home.mapper.AdminMapper" >
+
+    <resultMap id="BaseResultMap" type="com.cos_home.entity.Admin" >
+        <!--
+        @mbggenerated
+        -->
+        <id column="admin_id" property="adminId" jdbcType="BIGINT" />
+        <result column="admin_account" property="adminAccount" jdbcType="VARCHAR" />
+        <result column="admin_name" property="adminName" jdbcType="VARCHAR" />
+        <result column="admin_phone" property="adminPhone" jdbcType="VARCHAR" />
+        <result column="admin_email" property="adminEmail" jdbcType="VARCHAR" />
+        <result column="admin_salt" property="adminSalt" jdbcType="VARCHAR" />
+        <result column="admin_password" property="adminPassword" jdbcType="VARCHAR" />
+        <result column="admin_portrait_url" property="adminPortraitUrl" jdbcType="VARCHAR" />
+        <result column="admin_gender" property="adminGender" jdbcType="VARCHAR" />
+        <result column="admin_is_del" property="adminIsDel" jdbcType="INTEGER" />
+        <result column="admin_state" property="adminState" jdbcType="INTEGER" />
+        <result column="admin_create_time" property="adminCreateTime" jdbcType="TIMESTAMP" />
+        <result column="admin_create_id" property="adminCreateId" jdbcType="BIGINT" />
+        <result column="admin_role_id" property="adminRoleId" jdbcType="BIGINT" />
+    </resultMap>
+
+    <sql id="Example_Where_Clause" >
+        <!--
+        @mbggenerated
+        -->
+        <where >
+            <foreach collection="oredCriteria" item="criteria" separator="or" >
+                <if test="criteria.valid" >
+                    <trim prefix="(" suffix=")" prefixOverrides="and" >
+                        <foreach collection="criteria.criteria" item="criterion" >
+                            <choose >
+                                <when test="criterion.noValue" >
+                                    and ${criterion.condition}
+                                </when>
+                                <when test="criterion.singleValue" >
+                                    and ${criterion.condition} #{criterion.value}
+                                </when>
+                                <when test="criterion.betweenValue" >
+                                    and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                                </when>
+                                <when test="criterion.listValue" >
+                                    and ${criterion.condition}
+                                    <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                                        #{listItem}
+                                    </foreach>
+                                </when>
+                            </choose>
+                        </foreach>
+                    </trim>
+                </if>
+            </foreach>
+        </where>
+    </sql>
+
+    <sql id="Update_By_Example_Where_Clause" >
+        <!--
+        @mbggenerated
+        -->
+        <where >
+            <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+                <if test="criteria.valid" >
+                    <trim prefix="(" suffix=")" prefixOverrides="and" >
+                        <foreach collection="criteria.criteria" item="criterion" >
+                            <choose >
+                                <when test="criterion.noValue" >
+                                    and ${criterion.condition}
+                                </when>
+                                <when test="criterion.singleValue" >
+                                    and ${criterion.condition} #{criterion.value}
+                                </when>
+                                <when test="criterion.betweenValue" >
+                                    and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                                </when>
+                                <when test="criterion.listValue" >
+                                    and ${criterion.condition}
+                                    <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                                        #{listItem}
+                                    </foreach>
+                                </when>
+                            </choose>
+                        </foreach>
+                    </trim>
+                </if>
+            </foreach>
+        </where>
+    </sql>
+
+    <sql id="Base_Column_List" >
+        <!--
+        @mbggenerated
+        -->
+        admin_id, admin_account, admin_name, admin_phone, admin_email, admin_salt, admin_password, 
+        admin_portrait_url, admin_gender, admin_is_del, admin_state, admin_create_time, admin_create_id, 
+        admin_role_id
+    </sql>
+
+    <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.cos_home.entity.AdminExample" >
+        <!--
+        @mbggenerated
+        -->
+        select
+        <if test="distinct" >
+            distinct
+        </if>
+        <include refid="Base_Column_List" />
+        from admin
+        <if test="_parameter != null" >
+            <include refid="Example_Where_Clause" />
+        </if>
+        <if test="orderByClause != null" >
+            order by ${orderByClause}
+        </if>
+        <if test="limitStart != null and limitStart>=0" >
+            limit #{limitStart} , #{limitEnd}
+        </if>
+    </select>
+
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+        <!--
+        @mbggenerated
+        -->
+        select 
+        <include refid="Base_Column_List" />
+        from admin
+        where admin_id = #{adminId,jdbcType=BIGINT}
+    </select>
+
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+        <!--
+        @mbggenerated
+        -->
+        delete from admin
+        where admin_id = #{adminId,jdbcType=BIGINT}
+    </delete>
+
+    <delete id="deleteByExample" parameterType="com.cos_home.entity.AdminExample" >
+        <!--
+        @mbggenerated
+        -->
+        delete from admin
+        <if test="_parameter != null" >
+            <include refid="Example_Where_Clause" />
+        </if>
+    </delete>
+
+    <insert id="insert" parameterType="com.cos_home.entity.Admin" >
+        <!--
+        @mbggenerated
+        -->
+        insert into admin (admin_id, admin_account, admin_name, 
+            admin_phone, admin_email, admin_salt, 
+            admin_password, admin_portrait_url, admin_gender, 
+            admin_is_del, admin_state, admin_create_time, 
+            admin_create_id, admin_role_id)
+        values (#{adminId,jdbcType=BIGINT}, #{adminAccount,jdbcType=VARCHAR}, #{adminName,jdbcType=VARCHAR}, 
+            #{adminPhone,jdbcType=VARCHAR}, #{adminEmail,jdbcType=VARCHAR}, #{adminSalt,jdbcType=VARCHAR}, 
+            #{adminPassword,jdbcType=VARCHAR}, #{adminPortraitUrl,jdbcType=VARCHAR}, #{adminGender,jdbcType=VARCHAR}, 
+            #{adminIsDel,jdbcType=INTEGER}, #{adminState,jdbcType=INTEGER}, #{adminCreateTime,jdbcType=TIMESTAMP}, 
+            #{adminCreateId,jdbcType=BIGINT}, #{adminRoleId,jdbcType=BIGINT})
+    </insert>
+
+    <insert id="insertSelective" parameterType="com.cos_home.entity.Admin" >
+        <!--
+        @mbggenerated
+        -->
+        insert into admin
+        <trim prefix="(" suffix=")" suffixOverrides="," >
+            <if test="adminId != null" >
+                admin_id,
+            </if>
+            <if test="adminAccount != null" >
+                admin_account,
+            </if>
+            <if test="adminName != null" >
+                admin_name,
+            </if>
+            <if test="adminPhone != null" >
+                admin_phone,
+            </if>
+            <if test="adminEmail != null" >
+                admin_email,
+            </if>
+            <if test="adminSalt != null" >
+                admin_salt,
+            </if>
+            <if test="adminPassword != null" >
+                admin_password,
+            </if>
+            <if test="adminPortraitUrl != null" >
+                admin_portrait_url,
+            </if>
+            <if test="adminGender != null" >
+                admin_gender,
+            </if>
+            <if test="adminIsDel != null" >
+                admin_is_del,
+            </if>
+            <if test="adminState != null" >
+                admin_state,
+            </if>
+            <if test="adminCreateTime != null" >
+                admin_create_time,
+            </if>
+            <if test="adminCreateId != null" >
+                admin_create_id,
+            </if>
+            <if test="adminRoleId != null" >
+                admin_role_id,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides="," >
+            <if test="adminId != null" >
+                #{adminId,jdbcType=BIGINT},
+            </if>
+            <if test="adminAccount != null" >
+                #{adminAccount,jdbcType=VARCHAR},
+            </if>
+            <if test="adminName != null" >
+                #{adminName,jdbcType=VARCHAR},
+            </if>
+            <if test="adminPhone != null" >
+                #{adminPhone,jdbcType=VARCHAR},
+            </if>
+            <if test="adminEmail != null" >
+                #{adminEmail,jdbcType=VARCHAR},
+            </if>
+            <if test="adminSalt != null" >
+                #{adminSalt,jdbcType=VARCHAR},
+            </if>
+            <if test="adminPassword != null" >
+                #{adminPassword,jdbcType=VARCHAR},
+            </if>
+            <if test="adminPortraitUrl != null" >
+                #{adminPortraitUrl,jdbcType=VARCHAR},
+            </if>
+            <if test="adminGender != null" >
+                #{adminGender,jdbcType=VARCHAR},
+            </if>
+            <if test="adminIsDel != null" >
+                #{adminIsDel,jdbcType=INTEGER},
+            </if>
+            <if test="adminState != null" >
+                #{adminState,jdbcType=INTEGER},
+            </if>
+            <if test="adminCreateTime != null" >
+                #{adminCreateTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="adminCreateId != null" >
+                #{adminCreateId,jdbcType=BIGINT},
+            </if>
+            <if test="adminRoleId != null" >
+                #{adminRoleId,jdbcType=BIGINT},
+            </if>
+        </trim>
+    </insert>
+
+    <select id="countByExample" parameterType="com.cos_home.entity.AdminExample" resultType="java.lang.Integer" >
+        <!--
+        @mbggenerated
+        -->
+        select count(*) from admin
+        <if test="_parameter != null" >
+            <include refid="Example_Where_Clause" />
+        </if>
+    </select>
+
+    <update id="updateByExampleSelective" parameterType="map" >
+        <!--
+        @mbggenerated
+        -->
+        update admin
+        <set >
+            <if test="record.adminId != null" >
+                admin_id = #{record.adminId,jdbcType=BIGINT},
+            </if>
+            <if test="record.adminAccount != null" >
+                admin_account = #{record.adminAccount,jdbcType=VARCHAR},
+            </if>
+            <if test="record.adminName != null" >
+                admin_name = #{record.adminName,jdbcType=VARCHAR},
+            </if>
+            <if test="record.adminPhone != null" >
+                admin_phone = #{record.adminPhone,jdbcType=VARCHAR},
+            </if>
+            <if test="record.adminEmail != null" >
+                admin_email = #{record.adminEmail,jdbcType=VARCHAR},
+            </if>
+            <if test="record.adminSalt != null" >
+                admin_salt = #{record.adminSalt,jdbcType=VARCHAR},
+            </if>
+            <if test="record.adminPassword != null" >
+                admin_password = #{record.adminPassword,jdbcType=VARCHAR},
+            </if>
+            <if test="record.adminPortraitUrl != null" >
+                admin_portrait_url = #{record.adminPortraitUrl,jdbcType=VARCHAR},
+            </if>
+            <if test="record.adminGender != null" >
+                admin_gender = #{record.adminGender,jdbcType=VARCHAR},
+            </if>
+            <if test="record.adminIsDel != null" >
+                admin_is_del = #{record.adminIsDel,jdbcType=INTEGER},
+            </if>
+            <if test="record.adminState != null" >
+                admin_state = #{record.adminState,jdbcType=INTEGER},
+            </if>
+            <if test="record.adminCreateTime != null" >
+                admin_create_time = #{record.adminCreateTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="record.adminCreateId != null" >
+                admin_create_id = #{record.adminCreateId,jdbcType=BIGINT},
+            </if>
+            <if test="record.adminRoleId != null" >
+                admin_role_id = #{record.adminRoleId,jdbcType=BIGINT},
+            </if>
+        </set>
+        <if test="_parameter != null" >
+            <include refid="Update_By_Example_Where_Clause" />
+        </if>
+    </update>
+
+    <update id="updateByExample" parameterType="map" >
+        <!--
+        @mbggenerated
+        -->
+        update admin
+        set admin_id = #{record.adminId,jdbcType=BIGINT},
+            admin_account = #{record.adminAccount,jdbcType=VARCHAR},
+            admin_name = #{record.adminName,jdbcType=VARCHAR},
+            admin_phone = #{record.adminPhone,jdbcType=VARCHAR},
+            admin_email = #{record.adminEmail,jdbcType=VARCHAR},
+            admin_salt = #{record.adminSalt,jdbcType=VARCHAR},
+            admin_password = #{record.adminPassword,jdbcType=VARCHAR},
+            admin_portrait_url = #{record.adminPortraitUrl,jdbcType=VARCHAR},
+            admin_gender = #{record.adminGender,jdbcType=VARCHAR},
+            admin_is_del = #{record.adminIsDel,jdbcType=INTEGER},
+            admin_state = #{record.adminState,jdbcType=INTEGER},
+            admin_create_time = #{record.adminCreateTime,jdbcType=TIMESTAMP},
+            admin_create_id = #{record.adminCreateId,jdbcType=BIGINT},
+            admin_role_id = #{record.adminRoleId,jdbcType=BIGINT}
+        <if test="_parameter != null" >
+            <include refid="Update_By_Example_Where_Clause" />
+        </if>
+    </update>
+
+    <update id="updateByPrimaryKeySelective" parameterType="com.cos_home.entity.Admin" >
+        <!--
+        @mbggenerated
+        -->
+        update admin
+        <set >
+            <if test="adminAccount != null" >
+                admin_account = #{adminAccount,jdbcType=VARCHAR},
+            </if>
+            <if test="adminName != null" >
+                admin_name = #{adminName,jdbcType=VARCHAR},
+            </if>
+            <if test="adminPhone != null" >
+                admin_phone = #{adminPhone,jdbcType=VARCHAR},
+            </if>
+            <if test="adminEmail != null" >
+                admin_email = #{adminEmail,jdbcType=VARCHAR},
+            </if>
+            <if test="adminSalt != null" >
+                admin_salt = #{adminSalt,jdbcType=VARCHAR},
+            </if>
+            <if test="adminPassword != null" >
+                admin_password = #{adminPassword,jdbcType=VARCHAR},
+            </if>
+            <if test="adminPortraitUrl != null" >
+                admin_portrait_url = #{adminPortraitUrl,jdbcType=VARCHAR},
+            </if>
+            <if test="adminGender != null" >
+                admin_gender = #{adminGender,jdbcType=VARCHAR},
+            </if>
+            <if test="adminIsDel != null" >
+                admin_is_del = #{adminIsDel,jdbcType=INTEGER},
+            </if>
+            <if test="adminState != null" >
+                admin_state = #{adminState,jdbcType=INTEGER},
+            </if>
+            <if test="adminCreateTime != null" >
+                admin_create_time = #{adminCreateTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="adminCreateId != null" >
+                admin_create_id = #{adminCreateId,jdbcType=BIGINT},
+            </if>
+            <if test="adminRoleId != null" >
+                admin_role_id = #{adminRoleId,jdbcType=BIGINT},
+            </if>
+        </set>
+        where admin_id = #{adminId,jdbcType=BIGINT}
+    </update>
+
+    <update id="updateByPrimaryKey" parameterType="com.cos_home.entity.Admin" >
+        <!--
+        @mbggenerated
+        -->
+        update admin
+        set admin_account = #{adminAccount,jdbcType=VARCHAR},
+            admin_name = #{adminName,jdbcType=VARCHAR},
+            admin_phone = #{adminPhone,jdbcType=VARCHAR},
+            admin_email = #{adminEmail,jdbcType=VARCHAR},
+            admin_salt = #{adminSalt,jdbcType=VARCHAR},
+            admin_password = #{adminPassword,jdbcType=VARCHAR},
+            admin_portrait_url = #{adminPortraitUrl,jdbcType=VARCHAR},
+            admin_gender = #{adminGender,jdbcType=VARCHAR},
+            admin_is_del = #{adminIsDel,jdbcType=INTEGER},
+            admin_state = #{adminState,jdbcType=INTEGER},
+            admin_create_time = #{adminCreateTime,jdbcType=TIMESTAMP},
+            admin_create_id = #{adminCreateId,jdbcType=BIGINT},
+            admin_role_id = #{adminRoleId,jdbcType=BIGINT}
+        where admin_id = #{adminId,jdbcType=BIGINT}
+    </update>
+</mapper>

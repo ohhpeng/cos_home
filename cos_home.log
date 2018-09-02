@@ -1,0 +1,4 @@
+2018/09/02-21:49 [restartedMain] INFO  com.cos_home.CosHomeApplication- Starting CosHomeApplication on BBEN with PID 10524 (started by 11716 in C:\Users\11716\Desktop\毕业设计\coshome\cos_home)
+2018/09/02-21:49 [restartedMain] DEBUG com.cos_home.CosHomeApplication- Running with Spring Boot v1.5.15.RELEASE, Spring v4.3.18.RELEASE
+2018/09/02-21:49 [restartedMain] INFO  com.cos_home.CosHomeApplication- No active profile set, falling back to default profiles: default
+2018/09/02-21:49 [restartedMain] INFO  com.cos_home.CosHomeApplication- Started CosHomeApplication in 2.218 seconds (JVM running for 996.822)

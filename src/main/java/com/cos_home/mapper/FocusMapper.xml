@@ -1,0 +1,274 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.cos_home.mapper.FocusMapper" >
+
+    <resultMap id="BaseResultMap" type="com.cos_home.entity.Focus" >
+        <!--
+        @mbggenerated
+        -->
+        <id column="focus_id" property="focusId" jdbcType="BIGINT" />
+        <result column="focus_user_id" property="focusUserId" jdbcType="BIGINT" />
+        <result column="focus_state" property="focusState" jdbcType="INTEGER" />
+        <result column="focus_time" property="focusTime" jdbcType="TIMESTAMP" />
+        <result column="focus_target_user_id" property="focusTargetUserId" jdbcType="BIGINT" />
+    </resultMap>
+
+    <sql id="Example_Where_Clause" >
+        <!--
+        @mbggenerated
+        -->
+        <where >
+            <foreach collection="oredCriteria" item="criteria" separator="or" >
+                <if test="criteria.valid" >
+                    <trim prefix="(" suffix=")" prefixOverrides="and" >
+                        <foreach collection="criteria.criteria" item="criterion" >
+                            <choose >
+                                <when test="criterion.noValue" >
+                                    and ${criterion.condition}
+                                </when>
+                                <when test="criterion.singleValue" >
+                                    and ${criterion.condition} #{criterion.value}
+                                </when>
+                                <when test="criterion.betweenValue" >
+                                    and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                                </when>
+                                <when test="criterion.listValue" >
+                                    and ${criterion.condition}
+                                    <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                                        #{listItem}
+                                    </foreach>
+                                </when>
+                            </choose>
+                        </foreach>
+                    </trim>
+                </if>
+            </foreach>
+        </where>
+    </sql>
+
+    <sql id="Update_By_Example_Where_Clause" >
+        <!--
+        @mbggenerated
+        -->
+        <where >
+            <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+                <if test="criteria.valid" >
+                    <trim prefix="(" suffix=")" prefixOverrides="and" >
+                        <foreach collection="criteria.criteria" item="criterion" >
+                            <choose >
+                                <when test="criterion.noValue" >
+                                    and ${criterion.condition}
+                                </when>
+                                <when test="criterion.singleValue" >
+                                    and ${criterion.condition} #{criterion.value}
+                                </when>
+                                <when test="criterion.betweenValue" >
+                                    and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                                </when>
+                                <when test="criterion.listValue" >
+                                    and ${criterion.condition}
+                                    <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                                        #{listItem}
+                                    </foreach>
+                                </when>
+                            </choose>
+                        </foreach>
+                    </trim>
+                </if>
+            </foreach>
+        </where>
+    </sql>
+
+    <sql id="Base_Column_List" >
+        <!--
+        @mbggenerated
+        -->
+        focus_id, focus_user_id, focus_state, focus_time, focus_target_user_id
+    </sql>
+
+    <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.cos_home.entity.FocusExample" >
+        <!--
+        @mbggenerated
+        -->
+        select
+        <if test="distinct" >
+            distinct
+        </if>
+        <include refid="Base_Column_List" />
+        from focus
+        <if test="_parameter != null" >
+            <include refid="Example_Where_Clause" />
+        </if>
+        <if test="orderByClause != null" >
+            order by ${orderByClause}
+        </if>
+        <if test="limitStart != null and limitStart>=0" >
+            limit #{limitStart} , #{limitEnd}
+        </if>
+    </select>
+
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+        <!--
+        @mbggenerated
+        -->
+        select 
+        <include refid="Base_Column_List" />
+        from focus
+        where focus_id = #{focusId,jdbcType=BIGINT}
+    </select>
+
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+        <!--
+        @mbggenerated
+        -->
+        delete from focus
+        where focus_id = #{focusId,jdbcType=BIGINT}
+    </delete>
+
+    <delete id="deleteByExample" parameterType="com.cos_home.entity.FocusExample" >
+        <!--
+        @mbggenerated
+        -->
+        delete from focus
+        <if test="_parameter != null" >
+            <include refid="Example_Where_Clause" />
+        </if>
+    </delete>
+
+    <insert id="insert" parameterType="com.cos_home.entity.Focus" >
+        <!--
+        @mbggenerated
+        -->
+        insert into focus (focus_id, focus_user_id, focus_state, 
+            focus_time, focus_target_user_id)
+        values (#{focusId,jdbcType=BIGINT}, #{focusUserId,jdbcType=BIGINT}, #{focusState,jdbcType=INTEGER}, 
+            #{focusTime,jdbcType=TIMESTAMP}, #{focusTargetUserId,jdbcType=BIGINT})
+    </insert>
+
+    <insert id="insertSelective" parameterType="com.cos_home.entity.Focus" >
+        <!--
+        @mbggenerated
+        -->
+        insert into focus
+        <trim prefix="(" suffix=")" suffixOverrides="," >
+            <if test="focusId != null" >
+                focus_id,
+            </if>
+            <if test="focusUserId != null" >
+                focus_user_id,
+            </if>
+            <if test="focusState != null" >
+                focus_state,
+            </if>
+            <if test="focusTime != null" >
+                focus_time,
+            </if>
+            <if test="focusTargetUserId != null" >
+                focus_target_user_id,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides="," >
+            <if test="focusId != null" >
+                #{focusId,jdbcType=BIGINT},
+            </if>
+            <if test="focusUserId != null" >
+                #{focusUserId,jdbcType=BIGINT},
+            </if>
+            <if test="focusState != null" >
+                #{focusState,jdbcType=INTEGER},
+            </if>
+            <if test="focusTime != null" >
+                #{focusTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="focusTargetUserId != null" >
+                #{focusTargetUserId,jdbcType=BIGINT},
+            </if>
+        </trim>
+    </insert>
+
+    <select id="countByExample" parameterType="com.cos_home.entity.FocusExample" resultType="java.lang.Integer" >
+        <!--
+        @mbggenerated
+        -->
+        select count(*) from focus
+        <if test="_parameter != null" >
+            <include refid="Example_Where_Clause" />
+        </if>
+    </select>
+
+    <update id="updateByExampleSelective" parameterType="map" >
+        <!--
+        @mbggenerated
+        -->
+        update focus
+        <set >
+            <if test="record.focusId != null" >
+                focus_id = #{record.focusId,jdbcType=BIGINT},
+            </if>
+            <if test="record.focusUserId != null" >
+                focus_user_id = #{record.focusUserId,jdbcType=BIGINT},
+            </if>
+            <if test="record.focusState != null" >
+                focus_state = #{record.focusState,jdbcType=INTEGER},
+            </if>
+            <if test="record.focusTime != null" >
+                focus_time = #{record.focusTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="record.focusTargetUserId != null" >
+                focus_target_user_id = #{record.focusTargetUserId,jdbcType=BIGINT},
+            </if>
+        </set>
+        <if test="_parameter != null" >
+            <include refid="Update_By_Example_Where_Clause" />
+        </if>
+    </update>
+
+    <update id="updateByExample" parameterType="map" >
+        <!--
+        @mbggenerated
+        -->
+        update focus
+        set focus_id = #{record.focusId,jdbcType=BIGINT},
+            focus_user_id = #{record.focusUserId,jdbcType=BIGINT},
+            focus_state = #{record.focusState,jdbcType=INTEGER},
+            focus_time = #{record.focusTime,jdbcType=TIMESTAMP},
+            focus_target_user_id = #{record.focusTargetUserId,jdbcType=BIGINT}
+        <if test="_parameter != null" >
+            <include refid="Update_By_Example_Where_Clause" />
+        </if>
+    </update>
+
+    <update id="updateByPrimaryKeySelective" parameterType="com.cos_home.entity.Focus" >
+        <!--
+        @mbggenerated
+        -->
+        update focus
+        <set >
+            <if test="focusUserId != null" >
+                focus_user_id = #{focusUserId,jdbcType=BIGINT},
+            </if>
+            <if test="focusState != null" >
+                focus_state = #{focusState,jdbcType=INTEGER},
+            </if>
+            <if test="focusTime != null" >
+                focus_time = #{focusTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="focusTargetUserId != null" >
+                focus_target_user_id = #{focusTargetUserId,jdbcType=BIGINT},
+            </if>
+        </set>
+        where focus_id = #{focusId,jdbcType=BIGINT}
+    </update>
+
+    <update id="updateByPrimaryKey" parameterType="com.cos_home.entity.Focus" >
+        <!--
+        @mbggenerated
+        -->
+        update focus
+        set focus_user_id = #{focusUserId,jdbcType=BIGINT},
+            focus_state = #{focusState,jdbcType=INTEGER},
+            focus_time = #{focusTime,jdbcType=TIMESTAMP},
+            focus_target_user_id = #{focusTargetUserId,jdbcType=BIGINT}
+        where focus_id = #{focusId,jdbcType=BIGINT}
+    </update>
+</mapper>

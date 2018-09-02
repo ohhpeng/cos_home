@@ -1,0 +1,434 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.cos_home.mapper.ViewMapper" >
+
+    <resultMap id="BaseResultMap" type="com.cos_home.entity.View" >
+        <!--
+        @mbggenerated
+        -->
+        <id column="view_id" property="viewId" jdbcType="BIGINT" />
+        <result column="view_name" property="viewName" jdbcType="VARCHAR" />
+        <result column="view_introduce" property="viewIntroduce" jdbcType="VARCHAR" />
+        <result column="view_address" property="viewAddress" jdbcType="VARCHAR" />
+        <result column="view_spot" property="viewSpot" jdbcType="VARCHAR" />
+        <result column="view_ticket_num" property="viewTicketNum" jdbcType="BIGINT" />
+        <result column="view_image_url" property="viewImageUrl" jdbcType="VARCHAR" />
+        <result column="view_create_date" property="viewCreateDate" jdbcType="TIMESTAMP" />
+        <result column="view_admin_id" property="viewAdminId" jdbcType="BIGINT" />
+        <result column="view_is_del" property="viewIsDel" jdbcType="INTEGER" />
+        <result column="view_update_date" property="viewUpdateDate" jdbcType="TIMESTAMP" />
+        <result column="view_lable_id" property="viewLableId" jdbcType="BIGINT" />
+        <result column="view_open_time" property="viewOpenTime" jdbcType="TIMESTAMP" />
+        <result column="view_close_time" property="viewCloseTime" jdbcType="TIMESTAMP" />
+        <result column="view_instructions" property="viewInstructions" jdbcType="VARCHAR" />
+    </resultMap>
+
+    <sql id="Example_Where_Clause" >
+        <!--
+        @mbggenerated
+        -->
+        <where >
+            <foreach collection="oredCriteria" item="criteria" separator="or" >
+                <if test="criteria.valid" >
+                    <trim prefix="(" suffix=")" prefixOverrides="and" >
+                        <foreach collection="criteria.criteria" item="criterion" >
+                            <choose >
+                                <when test="criterion.noValue" >
+                                    and ${criterion.condition}
+                                </when>
+                                <when test="criterion.singleValue" >
+                                    and ${criterion.condition} #{criterion.value}
+                                </when>
+                                <when test="criterion.betweenValue" >
+                                    and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                                </when>
+                                <when test="criterion.listValue" >
+                                    and ${criterion.condition}
+                                    <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                                        #{listItem}
+                                    </foreach>
+                                </when>
+                            </choose>
+                        </foreach>
+                    </trim>
+                </if>
+            </foreach>
+        </where>
+    </sql>
+
+    <sql id="Update_By_Example_Where_Clause" >
+        <!--
+        @mbggenerated
+        -->
+        <where >
+            <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+                <if test="criteria.valid" >
+                    <trim prefix="(" suffix=")" prefixOverrides="and" >
+                        <foreach collection="criteria.criteria" item="criterion" >
+                            <choose >
+                                <when test="criterion.noValue" >
+                                    and ${criterion.condition}
+                                </when>
+                                <when test="criterion.singleValue" >
+                                    and ${criterion.condition} #{criterion.value}
+                                </when>
+                                <when test="criterion.betweenValue" >
+                                    and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                                </when>
+                                <when test="criterion.listValue" >
+                                    and ${criterion.condition}
+                                    <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                                        #{listItem}
+                                    </foreach>
+                                </when>
+                            </choose>
+                        </foreach>
+                    </trim>
+                </if>
+            </foreach>
+        </where>
+    </sql>
+
+    <sql id="Base_Column_List" >
+        <!--
+        @mbggenerated
+        -->
+        view_id, view_name, view_introduce, view_address, view_spot, view_ticket_num, view_image_url, 
+        view_create_date, view_admin_id, view_is_del, view_update_date, view_lable_id, view_open_time, 
+        view_close_time, view_instructions
+    </sql>
+
+    <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.cos_home.entity.ViewExample" >
+        <!--
+        @mbggenerated
+        -->
+        select
+        <if test="distinct" >
+            distinct
+        </if>
+        <include refid="Base_Column_List" />
+        from view
+        <if test="_parameter != null" >
+            <include refid="Example_Where_Clause" />
+        </if>
+        <if test="orderByClause != null" >
+            order by ${orderByClause}
+        </if>
+        <if test="limitStart != null and limitStart>=0" >
+            limit #{limitStart} , #{limitEnd}
+        </if>
+    </select>
+
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+        <!--
+        @mbggenerated
+        -->
+        select 
+        <include refid="Base_Column_List" />
+        from view
+        where view_id = #{viewId,jdbcType=BIGINT}
+    </select>
+
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+        <!--
+        @mbggenerated
+        -->
+        delete from view
+        where view_id = #{viewId,jdbcType=BIGINT}
+    </delete>
+
+    <delete id="deleteByExample" parameterType="com.cos_home.entity.ViewExample" >
+        <!--
+        @mbggenerated
+        -->
+        delete from view
+        <if test="_parameter != null" >
+            <include refid="Example_Where_Clause" />
+        </if>
+    </delete>
+
+    <insert id="insert" parameterType="com.cos_home.entity.View" >
+        <!--
+        @mbggenerated
+        -->
+        insert into view (view_id, view_name, view_introduce, 
+            view_address, view_spot, view_ticket_num, 
+            view_image_url, view_create_date, view_admin_id, 
+            view_is_del, view_update_date, view_lable_id, 
+            view_open_time, view_close_time, view_instructions
+            )
+        values (#{viewId,jdbcType=BIGINT}, #{viewName,jdbcType=VARCHAR}, #{viewIntroduce,jdbcType=VARCHAR}, 
+            #{viewAddress,jdbcType=VARCHAR}, #{viewSpot,jdbcType=VARCHAR}, #{viewTicketNum,jdbcType=BIGINT}, 
+            #{viewImageUrl,jdbcType=VARCHAR}, #{viewCreateDate,jdbcType=TIMESTAMP}, #{viewAdminId,jdbcType=BIGINT}, 
+            #{viewIsDel,jdbcType=INTEGER}, #{viewUpdateDate,jdbcType=TIMESTAMP}, #{viewLableId,jdbcType=BIGINT}, 
+            #{viewOpenTime,jdbcType=TIMESTAMP}, #{viewCloseTime,jdbcType=TIMESTAMP}, #{viewInstructions,jdbcType=VARCHAR}
+            )
+    </insert>
+
+    <insert id="insertSelective" parameterType="com.cos_home.entity.View" >
+        <!--
+        @mbggenerated
+        -->
+        insert into view
+        <trim prefix="(" suffix=")" suffixOverrides="," >
+            <if test="viewId != null" >
+                view_id,
+            </if>
+            <if test="viewName != null" >
+                view_name,
+            </if>
+            <if test="viewIntroduce != null" >
+                view_introduce,
+            </if>
+            <if test="viewAddress != null" >
+                view_address,
+            </if>
+            <if test="viewSpot != null" >
+                view_spot,
+            </if>
+            <if test="viewTicketNum != null" >
+                view_ticket_num,
+            </if>
+            <if test="viewImageUrl != null" >
+                view_image_url,
+            </if>
+            <if test="viewCreateDate != null" >
+                view_create_date,
+            </if>
+            <if test="viewAdminId != null" >
+                view_admin_id,
+            </if>
+            <if test="viewIsDel != null" >
+                view_is_del,
+            </if>
+            <if test="viewUpdateDate != null" >
+                view_update_date,
+            </if>
+            <if test="viewLableId != null" >
+                view_lable_id,
+            </if>
+            <if test="viewOpenTime != null" >
+                view_open_time,
+            </if>
+            <if test="viewCloseTime != null" >
+                view_close_time,
+            </if>
+            <if test="viewInstructions != null" >
+                view_instructions,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides="," >
+            <if test="viewId != null" >
+                #{viewId,jdbcType=BIGINT},
+            </if>
+            <if test="viewName != null" >
+                #{viewName,jdbcType=VARCHAR},
+            </if>
+            <if test="viewIntroduce != null" >
+                #{viewIntroduce,jdbcType=VARCHAR},
+            </if>
+            <if test="viewAddress != null" >
+                #{viewAddress,jdbcType=VARCHAR},
+            </if>
+            <if test="viewSpot != null" >
+                #{viewSpot,jdbcType=VARCHAR},
+            </if>
+            <if test="viewTicketNum != null" >
+                #{viewTicketNum,jdbcType=BIGINT},
+            </if>
+            <if test="viewImageUrl != null" >
+                #{viewImageUrl,jdbcType=VARCHAR},
+            </if>
+            <if test="viewCreateDate != null" >
+                #{viewCreateDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="viewAdminId != null" >
+                #{viewAdminId,jdbcType=BIGINT},
+            </if>
+            <if test="viewIsDel != null" >
+                #{viewIsDel,jdbcType=INTEGER},
+            </if>
+            <if test="viewUpdateDate != null" >
+                #{viewUpdateDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="viewLableId != null" >
+                #{viewLableId,jdbcType=BIGINT},
+            </if>
+            <if test="viewOpenTime != null" >
+                #{viewOpenTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="viewCloseTime != null" >
+                #{viewCloseTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="viewInstructions != null" >
+                #{viewInstructions,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+
+    <select id="countByExample" parameterType="com.cos_home.entity.ViewExample" resultType="java.lang.Integer" >
+        <!--
+        @mbggenerated
+        -->
+        select count(*) from view
+        <if test="_parameter != null" >
+            <include refid="Example_Where_Clause" />
+        </if>
+    </select>
+
+    <update id="updateByExampleSelective" parameterType="map" >
+        <!--
+        @mbggenerated
+        -->
+        update view
+        <set >
+            <if test="record.viewId != null" >
+                view_id = #{record.viewId,jdbcType=BIGINT},
+            </if>
+            <if test="record.viewName != null" >
+                view_name = #{record.viewName,jdbcType=VARCHAR},
+            </if>
+            <if test="record.viewIntroduce != null" >
+                view_introduce = #{record.viewIntroduce,jdbcType=VARCHAR},
+            </if>
+            <if test="record.viewAddress != null" >
+                view_address = #{record.viewAddress,jdbcType=VARCHAR},
+            </if>
+            <if test="record.viewSpot != null" >
+                view_spot = #{record.viewSpot,jdbcType=VARCHAR},
+            </if>
+            <if test="record.viewTicketNum != null" >
+                view_ticket_num = #{record.viewTicketNum,jdbcType=BIGINT},
+            </if>
+            <if test="record.viewImageUrl != null" >
+                view_image_url = #{record.viewImageUrl,jdbcType=VARCHAR},
+            </if>
+            <if test="record.viewCreateDate != null" >
+                view_create_date = #{record.viewCreateDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="record.viewAdminId != null" >
+                view_admin_id = #{record.viewAdminId,jdbcType=BIGINT},
+            </if>
+            <if test="record.viewIsDel != null" >
+                view_is_del = #{record.viewIsDel,jdbcType=INTEGER},
+            </if>
+            <if test="record.viewUpdateDate != null" >
+                view_update_date = #{record.viewUpdateDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="record.viewLableId != null" >
+                view_lable_id = #{record.viewLableId,jdbcType=BIGINT},
+            </if>
+            <if test="record.viewOpenTime != null" >
+                view_open_time = #{record.viewOpenTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="record.viewCloseTime != null" >
+                view_close_time = #{record.viewCloseTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="record.viewInstructions != null" >
+                view_instructions = #{record.viewInstructions,jdbcType=VARCHAR},
+            </if>
+        </set>
+        <if test="_parameter != null" >
+            <include refid="Update_By_Example_Where_Clause" />
+        </if>
+    </update>
+
+    <update id="updateByExample" parameterType="map" >
+        <!--
+        @mbggenerated
+        -->
+        update view
+        set view_id = #{record.viewId,jdbcType=BIGINT},
+            view_name = #{record.viewName,jdbcType=VARCHAR},
+            view_introduce = #{record.viewIntroduce,jdbcType=VARCHAR},
+            view_address = #{record.viewAddress,jdbcType=VARCHAR},
+            view_spot = #{record.viewSpot,jdbcType=VARCHAR},
+            view_ticket_num = #{record.viewTicketNum,jdbcType=BIGINT},
+            view_image_url = #{record.viewImageUrl,jdbcType=VARCHAR},
+            view_create_date = #{record.viewCreateDate,jdbcType=TIMESTAMP},
+            view_admin_id = #{record.viewAdminId,jdbcType=BIGINT},
+            view_is_del = #{record.viewIsDel,jdbcType=INTEGER},
+            view_update_date = #{record.viewUpdateDate,jdbcType=TIMESTAMP},
+            view_lable_id = #{record.viewLableId,jdbcType=BIGINT},
+            view_open_time = #{record.viewOpenTime,jdbcType=TIMESTAMP},
+            view_close_time = #{record.viewCloseTime,jdbcType=TIMESTAMP},
+            view_instructions = #{record.viewInstructions,jdbcType=VARCHAR}
+        <if test="_parameter != null" >
+            <include refid="Update_By_Example_Where_Clause" />
+        </if>
+    </update>
+
+    <update id="updateByPrimaryKeySelective" parameterType="com.cos_home.entity.View" >
+        <!--
+        @mbggenerated
+        -->
+        update view
+        <set >
+            <if test="viewName != null" >
+                view_name = #{viewName,jdbcType=VARCHAR},
+            </if>
+            <if test="viewIntroduce != null" >
+                view_introduce = #{viewIntroduce,jdbcType=VARCHAR},
+            </if>
+            <if test="viewAddress != null" >
+                view_address = #{viewAddress,jdbcType=VARCHAR},
+            </if>
+            <if test="viewSpot != null" >
+                view_spot = #{viewSpot,jdbcType=VARCHAR},
+            </if>
+            <if test="viewTicketNum != null" >
+                view_ticket_num = #{viewTicketNum,jdbcType=BIGINT},
+            </if>
+            <if test="viewImageUrl != null" >
+                view_image_url = #{viewImageUrl,jdbcType=VARCHAR},
+            </if>
+            <if test="viewCreateDate != null" >
+                view_create_date = #{viewCreateDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="viewAdminId != null" >
+                view_admin_id = #{viewAdminId,jdbcType=BIGINT},
+            </if>
+            <if test="viewIsDel != null" >
+                view_is_del = #{viewIsDel,jdbcType=INTEGER},
+            </if>
+            <if test="viewUpdateDate != null" >
+                view_update_date = #{viewUpdateDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="viewLableId != null" >
+                view_lable_id = #{viewLableId,jdbcType=BIGINT},
+            </if>
+            <if test="viewOpenTime != null" >
+                view_open_time = #{viewOpenTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="viewCloseTime != null" >
+                view_close_time = #{viewCloseTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="viewInstructions != null" >
+                view_instructions = #{viewInstructions,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where view_id = #{viewId,jdbcType=BIGINT}
+    </update>
+
+    <update id="updateByPrimaryKey" parameterType="com.cos_home.entity.View" >
+        <!--
+        @mbggenerated
+        -->
+        update view
+        set view_name = #{viewName,jdbcType=VARCHAR},
+            view_introduce = #{viewIntroduce,jdbcType=VARCHAR},
+            view_address = #{viewAddress,jdbcType=VARCHAR},
+            view_spot = #{viewSpot,jdbcType=VARCHAR},
+            view_ticket_num = #{viewTicketNum,jdbcType=BIGINT},
+            view_image_url = #{viewImageUrl,jdbcType=VARCHAR},
+            view_create_date = #{viewCreateDate,jdbcType=TIMESTAMP},
+            view_admin_id = #{viewAdminId,jdbcType=BIGINT},
+            view_is_del = #{viewIsDel,jdbcType=INTEGER},
+            view_update_date = #{viewUpdateDate,jdbcType=TIMESTAMP},
+            view_lable_id = #{viewLableId,jdbcType=BIGINT},
+            view_open_time = #{viewOpenTime,jdbcType=TIMESTAMP},
+            view_close_time = #{viewCloseTime,jdbcType=TIMESTAMP},
+            view_instructions = #{viewInstructions,jdbcType=VARCHAR}
+        where view_id = #{viewId,jdbcType=BIGINT}
+    </update>
+</mapper>

@@ -1,0 +1,387 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.cos_home.mapper.WorksMapper" >
+
+    <resultMap id="BaseResultMap" type="com.cos_home.entity.Works" >
+        <!--
+        @mbggenerated
+        -->
+        <id column="works_id" property="worksId" jdbcType="BIGINT" />
+        <result column="works_name" property="worksName" jdbcType="VARCHAR" />
+        <result column="works_introduce" property="worksIntroduce" jdbcType="VARCHAR" />
+        <result column="works_image_url" property="worksImageUrl" jdbcType="VARCHAR" />
+        <result column="works_is_del" property="worksIsDel" jdbcType="INTEGER" />
+        <result column="works_createtime" property="worksCreatetime" jdbcType="TIMESTAMP" />
+        <result column="works_publishtime" property="worksPublishtime" jdbcType="TIMESTAMP" />
+        <result column="works_is_pass" property="worksIsPass" jdbcType="INTEGER" />
+        <result column="works_reason" property="worksReason" jdbcType="VARCHAR" />
+        <result column="works_popularity" property="worksPopularity" jdbcType="BIGINT" />
+        <result column="works_user_id" property="worksUserId" jdbcType="BIGINT" />
+        <result column="works_lable_id" property="worksLableId" jdbcType="BIGINT" />
+    </resultMap>
+
+    <sql id="Example_Where_Clause" >
+        <!--
+        @mbggenerated
+        -->
+        <where >
+            <foreach collection="oredCriteria" item="criteria" separator="or" >
+                <if test="criteria.valid" >
+                    <trim prefix="(" suffix=")" prefixOverrides="and" >
+                        <foreach collection="criteria.criteria" item="criterion" >
+                            <choose >
+                                <when test="criterion.noValue" >
+                                    and ${criterion.condition}
+                                </when>
+                                <when test="criterion.singleValue" >
+                                    and ${criterion.condition} #{criterion.value}
+                                </when>
+                                <when test="criterion.betweenValue" >
+                                    and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                                </when>
+                                <when test="criterion.listValue" >
+                                    and ${criterion.condition}
+                                    <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                                        #{listItem}
+                                    </foreach>
+                                </when>
+                            </choose>
+                        </foreach>
+                    </trim>
+                </if>
+            </foreach>
+        </where>
+    </sql>
+
+    <sql id="Update_By_Example_Where_Clause" >
+        <!--
+        @mbggenerated
+        -->
+        <where >
+            <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+                <if test="criteria.valid" >
+                    <trim prefix="(" suffix=")" prefixOverrides="and" >
+                        <foreach collection="criteria.criteria" item="criterion" >
+                            <choose >
+                                <when test="criterion.noValue" >
+                                    and ${criterion.condition}
+                                </when>
+                                <when test="criterion.singleValue" >
+                                    and ${criterion.condition} #{criterion.value}
+                                </when>
+                                <when test="criterion.betweenValue" >
+                                    and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                                </when>
+                                <when test="criterion.listValue" >
+                                    and ${criterion.condition}
+                                    <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                                        #{listItem}
+                                    </foreach>
+                                </when>
+                            </choose>
+                        </foreach>
+                    </trim>
+                </if>
+            </foreach>
+        </where>
+    </sql>
+
+    <sql id="Base_Column_List" >
+        <!--
+        @mbggenerated
+        -->
+        works_id, works_name, works_introduce, works_image_url, works_is_del, works_createtime, 
+        works_publishtime, works_is_pass, works_reason, works_popularity, works_user_id, 
+        works_lable_id
+    </sql>
+
+    <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.cos_home.entity.WorksExample" >
+        <!--
+        @mbggenerated
+        -->
+        select
+        <if test="distinct" >
+            distinct
+        </if>
+        <include refid="Base_Column_List" />
+        from works
+        <if test="_parameter != null" >
+            <include refid="Example_Where_Clause" />
+        </if>
+        <if test="orderByClause != null" >
+            order by ${orderByClause}
+        </if>
+        <if test="limitStart != null and limitStart>=0" >
+            limit #{limitStart} , #{limitEnd}
+        </if>
+    </select>
+
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+        <!--
+        @mbggenerated
+        -->
+        select 
+        <include refid="Base_Column_List" />
+        from works
+        where works_id = #{worksId,jdbcType=BIGINT}
+    </select>
+
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+        <!--
+        @mbggenerated
+        -->
+        delete from works
+        where works_id = #{worksId,jdbcType=BIGINT}
+    </delete>
+
+    <delete id="deleteByExample" parameterType="com.cos_home.entity.WorksExample" >
+        <!--
+        @mbggenerated
+        -->
+        delete from works
+        <if test="_parameter != null" >
+            <include refid="Example_Where_Clause" />
+        </if>
+    </delete>
+
+    <insert id="insert" parameterType="com.cos_home.entity.Works" >
+        <!--
+        @mbggenerated
+        -->
+        insert into works (works_id, works_name, works_introduce, 
+            works_image_url, works_is_del, works_createtime, 
+            works_publishtime, works_is_pass, works_reason, 
+            works_popularity, works_user_id, works_lable_id
+            )
+        values (#{worksId,jdbcType=BIGINT}, #{worksName,jdbcType=VARCHAR}, #{worksIntroduce,jdbcType=VARCHAR}, 
+            #{worksImageUrl,jdbcType=VARCHAR}, #{worksIsDel,jdbcType=INTEGER}, #{worksCreatetime,jdbcType=TIMESTAMP}, 
+            #{worksPublishtime,jdbcType=TIMESTAMP}, #{worksIsPass,jdbcType=INTEGER}, #{worksReason,jdbcType=VARCHAR}, 
+            #{worksPopularity,jdbcType=BIGINT}, #{worksUserId,jdbcType=BIGINT}, #{worksLableId,jdbcType=BIGINT}
+            )
+    </insert>
+
+    <insert id="insertSelective" parameterType="com.cos_home.entity.Works" >
+        <!--
+        @mbggenerated
+        -->
+        insert into works
+        <trim prefix="(" suffix=")" suffixOverrides="," >
+            <if test="worksId != null" >
+                works_id,
+            </if>
+            <if test="worksName != null" >
+                works_name,
+            </if>
+            <if test="worksIntroduce != null" >
+                works_introduce,
+            </if>
+            <if test="worksImageUrl != null" >
+                works_image_url,
+            </if>
+            <if test="worksIsDel != null" >
+                works_is_del,
+            </if>
+            <if test="worksCreatetime != null" >
+                works_createtime,
+            </if>
+            <if test="worksPublishtime != null" >
+                works_publishtime,
+            </if>
+            <if test="worksIsPass != null" >
+                works_is_pass,
+            </if>
+            <if test="worksReason != null" >
+                works_reason,
+            </if>
+            <if test="worksPopularity != null" >
+                works_popularity,
+            </if>
+            <if test="worksUserId != null" >
+                works_user_id,
+            </if>
+            <if test="worksLableId != null" >
+                works_lable_id,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides="," >
+            <if test="worksId != null" >
+                #{worksId,jdbcType=BIGINT},
+            </if>
+            <if test="worksName != null" >
+                #{worksName,jdbcType=VARCHAR},
+            </if>
+            <if test="worksIntroduce != null" >
+                #{worksIntroduce,jdbcType=VARCHAR},
+            </if>
+            <if test="worksImageUrl != null" >
+                #{worksImageUrl,jdbcType=VARCHAR},
+            </if>
+            <if test="worksIsDel != null" >
+                #{worksIsDel,jdbcType=INTEGER},
+            </if>
+            <if test="worksCreatetime != null" >
+                #{worksCreatetime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="worksPublishtime != null" >
+                #{worksPublishtime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="worksIsPass != null" >
+                #{worksIsPass,jdbcType=INTEGER},
+            </if>
+            <if test="worksReason != null" >
+                #{worksReason,jdbcType=VARCHAR},
+            </if>
+            <if test="worksPopularity != null" >
+                #{worksPopularity,jdbcType=BIGINT},
+            </if>
+            <if test="worksUserId != null" >
+                #{worksUserId,jdbcType=BIGINT},
+            </if>
+            <if test="worksLableId != null" >
+                #{worksLableId,jdbcType=BIGINT},
+            </if>
+        </trim>
+    </insert>
+
+    <select id="countByExample" parameterType="com.cos_home.entity.WorksExample" resultType="java.lang.Integer" >
+        <!--
+        @mbggenerated
+        -->
+        select count(*) from works
+        <if test="_parameter != null" >
+            <include refid="Example_Where_Clause" />
+        </if>
+    </select>
+
+    <update id="updateByExampleSelective" parameterType="map" >
+        <!--
+        @mbggenerated
+        -->
+        update works
+        <set >
+            <if test="record.worksId != null" >
+                works_id = #{record.worksId,jdbcType=BIGINT},
+            </if>
+            <if test="record.worksName != null" >
+                works_name = #{record.worksName,jdbcType=VARCHAR},
+            </if>
+            <if test="record.worksIntroduce != null" >
+                works_introduce = #{record.worksIntroduce,jdbcType=VARCHAR},
+            </if>
+            <if test="record.worksImageUrl != null" >
+                works_image_url = #{record.worksImageUrl,jdbcType=VARCHAR},
+            </if>
+            <if test="record.worksIsDel != null" >
+                works_is_del = #{record.worksIsDel,jdbcType=INTEGER},
+            </if>
+            <if test="record.worksCreatetime != null" >
+                works_createtime = #{record.worksCreatetime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="record.worksPublishtime != null" >
+                works_publishtime = #{record.worksPublishtime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="record.worksIsPass != null" >
+                works_is_pass = #{record.worksIsPass,jdbcType=INTEGER},
+            </if>
+            <if test="record.worksReason != null" >
+                works_reason = #{record.worksReason,jdbcType=VARCHAR},
+            </if>
+            <if test="record.worksPopularity != null" >
+                works_popularity = #{record.worksPopularity,jdbcType=BIGINT},
+            </if>
+            <if test="record.worksUserId != null" >
+                works_user_id = #{record.worksUserId,jdbcType=BIGINT},
+            </if>
+            <if test="record.worksLableId != null" >
+                works_lable_id = #{record.worksLableId,jdbcType=BIGINT},
+            </if>
+        </set>
+        <if test="_parameter != null" >
+            <include refid="Update_By_Example_Where_Clause" />
+        </if>
+    </update>
+
+    <update id="updateByExample" parameterType="map" >
+        <!--
+        @mbggenerated
+        -->
+        update works
+        set works_id = #{record.worksId,jdbcType=BIGINT},
+            works_name = #{record.worksName,jdbcType=VARCHAR},
+            works_introduce = #{record.worksIntroduce,jdbcType=VARCHAR},
+            works_image_url = #{record.worksImageUrl,jdbcType=VARCHAR},
+            works_is_del = #{record.worksIsDel,jdbcType=INTEGER},
+            works_createtime = #{record.worksCreatetime,jdbcType=TIMESTAMP},
+            works_publishtime = #{record.worksPublishtime,jdbcType=TIMESTAMP},
+            works_is_pass = #{record.worksIsPass,jdbcType=INTEGER},
+            works_reason = #{record.worksReason,jdbcType=VARCHAR},
+            works_popularity = #{record.worksPopularity,jdbcType=BIGINT},
+            works_user_id = #{record.worksUserId,jdbcType=BIGINT},
+            works_lable_id = #{record.worksLableId,jdbcType=BIGINT}
+        <if test="_parameter != null" >
+            <include refid="Update_By_Example_Where_Clause" />
+        </if>
+    </update>
+
+    <update id="updateByPrimaryKeySelective" parameterType="com.cos_home.entity.Works" >
+        <!--
+        @mbggenerated
+        -->
+        update works
+        <set >
+            <if test="worksName != null" >
+                works_name = #{worksName,jdbcType=VARCHAR},
+            </if>
+            <if test="worksIntroduce != null" >
+                works_introduce = #{worksIntroduce,jdbcType=VARCHAR},
+            </if>
+            <if test="worksImageUrl != null" >
+                works_image_url = #{worksImageUrl,jdbcType=VARCHAR},
+            </if>
+            <if test="worksIsDel != null" >
+                works_is_del = #{worksIsDel,jdbcType=INTEGER},
+            </if>
+            <if test="worksCreatetime != null" >
+                works_createtime = #{worksCreatetime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="worksPublishtime != null" >
+                works_publishtime = #{worksPublishtime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="worksIsPass != null" >
+                works_is_pass = #{worksIsPass,jdbcType=INTEGER},
+            </if>
+            <if test="worksReason != null" >
+                works_reason = #{worksReason,jdbcType=VARCHAR},
+            </if>
+            <if test="worksPopularity != null" >
+                works_popularity = #{worksPopularity,jdbcType=BIGINT},
+            </if>
+            <if test="worksUserId != null" >
+                works_user_id = #{worksUserId,jdbcType=BIGINT},
+            </if>
+            <if test="worksLableId != null" >
+                works_lable_id = #{worksLableId,jdbcType=BIGINT},
+            </if>
+        </set>
+        where works_id = #{worksId,jdbcType=BIGINT}
+    </update>
+
+    <update id="updateByPrimaryKey" parameterType="com.cos_home.entity.Works" >
+        <!--
+        @mbggenerated
+        -->
+        update works
+        set works_name = #{worksName,jdbcType=VARCHAR},
+            works_introduce = #{worksIntroduce,jdbcType=VARCHAR},
+            works_image_url = #{worksImageUrl,jdbcType=VARCHAR},
+            works_is_del = #{worksIsDel,jdbcType=INTEGER},
+            works_createtime = #{worksCreatetime,jdbcType=TIMESTAMP},
+            works_publishtime = #{worksPublishtime,jdbcType=TIMESTAMP},
+            works_is_pass = #{worksIsPass,jdbcType=INTEGER},
+            works_reason = #{worksReason,jdbcType=VARCHAR},
+            works_popularity = #{worksPopularity,jdbcType=BIGINT},
+            works_user_id = #{worksUserId,jdbcType=BIGINT},
+            works_lable_id = #{worksLableId,jdbcType=BIGINT}
+        where works_id = #{worksId,jdbcType=BIGINT}
+    </update>
+</mapper>

@@ -1,0 +1,532 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.cos_home.mapper.ActivityMapper" >
+
+    <resultMap id="BaseResultMap" type="com.cos_home.entity.Activity" >
+        <!--
+        @mbggenerated
+        -->
+        <id column="activity_id" property="activityId" jdbcType="BIGINT" />
+        <result column="activity_name" property="activityName" jdbcType="VARCHAR" />
+        <result column="activity_image_url" property="activityImageUrl" jdbcType="VARCHAR" />
+        <result column="activity_createtime" property="activityCreatetime" jdbcType="TIMESTAMP" />
+        <result column="activity_start_holding" property="activityStartHolding" jdbcType="TIMESTAMP" />
+        <result column="activity_end_holding" property="activityEndHolding" jdbcType="TIMESTAMP" />
+        <result column="activity_content" property="activityContent" jdbcType="VARCHAR" />
+        <result column="activity_address" property="activityAddress" jdbcType="VARCHAR" />
+        <result column="activity_is_del" property="activityIsDel" jdbcType="INTEGER" />
+        <result column="activity_sponsor" property="activitySponsor" jdbcType="VARCHAR" />
+        <result column="activity_holder" property="activityHolder" jdbcType="VARCHAR" />
+        <result column="activity_people_num" property="activityPeopleNum" jdbcType="BIGINT" />
+        <result column="activity_star" property="activityStar" jdbcType="INTEGER" />
+        <result column="activity_admin_id" property="activityAdminId" jdbcType="BIGINT" />
+        <result column="activity_is_Longterm" property="activityIsLongterm" jdbcType="INTEGER" />
+        <result column="activity_is_limit" property="activityIsLimit" jdbcType="INTEGER" />
+        <result column="activity_apply_start_time" property="activityApplyStartTime" jdbcType="TIMESTAMP" />
+        <result column="activity_apply_end_time" property="activityApplyEndTime" jdbcType="TIMESTAMP" />
+        <result column="activity_apply_people_num" property="activityApplyPeopleNum" jdbcType="BIGINT" />
+        <result column="activity_is_check" property="activityIsCheck" jdbcType="INTEGER" />
+        <result column="activity_lable_id" property="activityLableId" jdbcType="BIGINT" />
+    </resultMap>
+
+    <sql id="Example_Where_Clause" >
+        <!--
+        @mbggenerated
+        -->
+        <where >
+            <foreach collection="oredCriteria" item="criteria" separator="or" >
+                <if test="criteria.valid" >
+                    <trim prefix="(" suffix=")" prefixOverrides="and" >
+                        <foreach collection="criteria.criteria" item="criterion" >
+                            <choose >
+                                <when test="criterion.noValue" >
+                                    and ${criterion.condition}
+                                </when>
+                                <when test="criterion.singleValue" >
+                                    and ${criterion.condition} #{criterion.value}
+                                </when>
+                                <when test="criterion.betweenValue" >
+                                    and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                                </when>
+                                <when test="criterion.listValue" >
+                                    and ${criterion.condition}
+                                    <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                                        #{listItem}
+                                    </foreach>
+                                </when>
+                            </choose>
+                        </foreach>
+                    </trim>
+                </if>
+            </foreach>
+        </where>
+    </sql>
+
+    <sql id="Update_By_Example_Where_Clause" >
+        <!--
+        @mbggenerated
+        -->
+        <where >
+            <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+                <if test="criteria.valid" >
+                    <trim prefix="(" suffix=")" prefixOverrides="and" >
+                        <foreach collection="criteria.criteria" item="criterion" >
+                            <choose >
+                                <when test="criterion.noValue" >
+                                    and ${criterion.condition}
+                                </when>
+                                <when test="criterion.singleValue" >
+                                    and ${criterion.condition} #{criterion.value}
+                                </when>
+                                <when test="criterion.betweenValue" >
+                                    and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                                </when>
+                                <when test="criterion.listValue" >
+                                    and ${criterion.condition}
+                                    <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                                        #{listItem}
+                                    </foreach>
+                                </when>
+                            </choose>
+                        </foreach>
+                    </trim>
+                </if>
+            </foreach>
+        </where>
+    </sql>
+
+    <sql id="Base_Column_List" >
+        <!--
+        @mbggenerated
+        -->
+        activity_id, activity_name, activity_image_url, activity_createtime, activity_start_holding, 
+        activity_end_holding, activity_content, activity_address, activity_is_del, activity_sponsor, 
+        activity_holder, activity_people_num, activity_star, activity_admin_id, activity_is_Longterm, 
+        activity_is_limit, activity_apply_start_time, activity_apply_end_time, activity_apply_people_num, 
+        activity_is_check, activity_lable_id
+    </sql>
+
+    <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.cos_home.entity.ActivityExample" >
+        <!--
+        @mbggenerated
+        -->
+        select
+        <if test="distinct" >
+            distinct
+        </if>
+        <include refid="Base_Column_List" />
+        from activity
+        <if test="_parameter != null" >
+            <include refid="Example_Where_Clause" />
+        </if>
+        <if test="orderByClause != null" >
+            order by ${orderByClause}
+        </if>
+        <if test="limitStart != null and limitStart>=0" >
+            limit #{limitStart} , #{limitEnd}
+        </if>
+    </select>
+
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+        <!--
+        @mbggenerated
+        -->
+        select 
+        <include refid="Base_Column_List" />
+        from activity
+        where activity_id = #{activityId,jdbcType=BIGINT}
+    </select>
+
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+        <!--
+        @mbggenerated
+        -->
+        delete from activity
+        where activity_id = #{activityId,jdbcType=BIGINT}
+    </delete>
+
+    <delete id="deleteByExample" parameterType="com.cos_home.entity.ActivityExample" >
+        <!--
+        @mbggenerated
+        -->
+        delete from activity
+        <if test="_parameter != null" >
+            <include refid="Example_Where_Clause" />
+        </if>
+    </delete>
+
+    <insert id="insert" parameterType="com.cos_home.entity.Activity" >
+        <!--
+        @mbggenerated
+        -->
+        insert into activity (activity_id, activity_name, activity_image_url, 
+            activity_createtime, activity_start_holding, 
+            activity_end_holding, activity_content, 
+            activity_address, activity_is_del, activity_sponsor, 
+            activity_holder, activity_people_num, activity_star, 
+            activity_admin_id, activity_is_Longterm, activity_is_limit, 
+            activity_apply_start_time, activity_apply_end_time, 
+            activity_apply_people_num, activity_is_check, 
+            activity_lable_id)
+        values (#{activityId,jdbcType=BIGINT}, #{activityName,jdbcType=VARCHAR}, #{activityImageUrl,jdbcType=VARCHAR}, 
+            #{activityCreatetime,jdbcType=TIMESTAMP}, #{activityStartHolding,jdbcType=TIMESTAMP}, 
+            #{activityEndHolding,jdbcType=TIMESTAMP}, #{activityContent,jdbcType=VARCHAR}, 
+            #{activityAddress,jdbcType=VARCHAR}, #{activityIsDel,jdbcType=INTEGER}, #{activitySponsor,jdbcType=VARCHAR}, 
+            #{activityHolder,jdbcType=VARCHAR}, #{activityPeopleNum,jdbcType=BIGINT}, #{activityStar,jdbcType=INTEGER}, 
+            #{activityAdminId,jdbcType=BIGINT}, #{activityIsLongterm,jdbcType=INTEGER}, #{activityIsLimit,jdbcType=INTEGER}, 
+            #{activityApplyStartTime,jdbcType=TIMESTAMP}, #{activityApplyEndTime,jdbcType=TIMESTAMP}, 
+            #{activityApplyPeopleNum,jdbcType=BIGINT}, #{activityIsCheck,jdbcType=INTEGER}, 
+            #{activityLableId,jdbcType=BIGINT})
+    </insert>
+
+    <insert id="insertSelective" parameterType="com.cos_home.entity.Activity" >
+        <!--
+        @mbggenerated
+        -->
+        insert into activity
+        <trim prefix="(" suffix=")" suffixOverrides="," >
+            <if test="activityId != null" >
+                activity_id,
+            </if>
+            <if test="activityName != null" >
+                activity_name,
+            </if>
+            <if test="activityImageUrl != null" >
+                activity_image_url,
+            </if>
+            <if test="activityCreatetime != null" >
+                activity_createtime,
+            </if>
+            <if test="activityStartHolding != null" >
+                activity_start_holding,
+            </if>
+            <if test="activityEndHolding != null" >
+                activity_end_holding,
+            </if>
+            <if test="activityContent != null" >
+                activity_content,
+            </if>
+            <if test="activityAddress != null" >
+                activity_address,
+            </if>
+            <if test="activityIsDel != null" >
+                activity_is_del,
+            </if>
+            <if test="activitySponsor != null" >
+                activity_sponsor,
+            </if>
+            <if test="activityHolder != null" >
+                activity_holder,
+            </if>
+            <if test="activityPeopleNum != null" >
+                activity_people_num,
+            </if>
+            <if test="activityStar != null" >
+                activity_star,
+            </if>
+            <if test="activityAdminId != null" >
+                activity_admin_id,
+            </if>
+            <if test="activityIsLongterm != null" >
+                activity_is_Longterm,
+            </if>
+            <if test="activityIsLimit != null" >
+                activity_is_limit,
+            </if>
+            <if test="activityApplyStartTime != null" >
+                activity_apply_start_time,
+            </if>
+            <if test="activityApplyEndTime != null" >
+                activity_apply_end_time,
+            </if>
+            <if test="activityApplyPeopleNum != null" >
+                activity_apply_people_num,
+            </if>
+            <if test="activityIsCheck != null" >
+                activity_is_check,
+            </if>
+            <if test="activityLableId != null" >
+                activity_lable_id,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides="," >
+            <if test="activityId != null" >
+                #{activityId,jdbcType=BIGINT},
+            </if>
+            <if test="activityName != null" >
+                #{activityName,jdbcType=VARCHAR},
+            </if>
+            <if test="activityImageUrl != null" >
+                #{activityImageUrl,jdbcType=VARCHAR},
+            </if>
+            <if test="activityCreatetime != null" >
+                #{activityCreatetime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="activityStartHolding != null" >
+                #{activityStartHolding,jdbcType=TIMESTAMP},
+            </if>
+            <if test="activityEndHolding != null" >
+                #{activityEndHolding,jdbcType=TIMESTAMP},
+            </if>
+            <if test="activityContent != null" >
+                #{activityContent,jdbcType=VARCHAR},
+            </if>
+            <if test="activityAddress != null" >
+                #{activityAddress,jdbcType=VARCHAR},
+            </if>
+            <if test="activityIsDel != null" >
+                #{activityIsDel,jdbcType=INTEGER},
+            </if>
+            <if test="activitySponsor != null" >
+                #{activitySponsor,jdbcType=VARCHAR},
+            </if>
+            <if test="activityHolder != null" >
+                #{activityHolder,jdbcType=VARCHAR},
+            </if>
+            <if test="activityPeopleNum != null" >
+                #{activityPeopleNum,jdbcType=BIGINT},
+            </if>
+            <if test="activityStar != null" >
+                #{activityStar,jdbcType=INTEGER},
+            </if>
+            <if test="activityAdminId != null" >
+                #{activityAdminId,jdbcType=BIGINT},
+            </if>
+            <if test="activityIsLongterm != null" >
+                #{activityIsLongterm,jdbcType=INTEGER},
+            </if>
+            <if test="activityIsLimit != null" >
+                #{activityIsLimit,jdbcType=INTEGER},
+            </if>
+            <if test="activityApplyStartTime != null" >
+                #{activityApplyStartTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="activityApplyEndTime != null" >
+                #{activityApplyEndTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="activityApplyPeopleNum != null" >
+                #{activityApplyPeopleNum,jdbcType=BIGINT},
+            </if>
+            <if test="activityIsCheck != null" >
+                #{activityIsCheck,jdbcType=INTEGER},
+            </if>
+            <if test="activityLableId != null" >
+                #{activityLableId,jdbcType=BIGINT},
+            </if>
+        </trim>
+    </insert>
+
+    <select id="countByExample" parameterType="com.cos_home.entity.ActivityExample" resultType="java.lang.Integer" >
+        <!--
+        @mbggenerated
+        -->
+        select count(*) from activity
+        <if test="_parameter != null" >
+            <include refid="Example_Where_Clause" />
+        </if>
+    </select>
+
+    <update id="updateByExampleSelective" parameterType="map" >
+        <!--
+        @mbggenerated
+        -->
+        update activity
+        <set >
+            <if test="record.activityId != null" >
+                activity_id = #{record.activityId,jdbcType=BIGINT},
+            </if>
+            <if test="record.activityName != null" >
+                activity_name = #{record.activityName,jdbcType=VARCHAR},
+            </if>
+            <if test="record.activityImageUrl != null" >
+                activity_image_url = #{record.activityImageUrl,jdbcType=VARCHAR},
+            </if>
+            <if test="record.activityCreatetime != null" >
+                activity_createtime = #{record.activityCreatetime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="record.activityStartHolding != null" >
+                activity_start_holding = #{record.activityStartHolding,jdbcType=TIMESTAMP},
+            </if>
+            <if test="record.activityEndHolding != null" >
+                activity_end_holding = #{record.activityEndHolding,jdbcType=TIMESTAMP},
+            </if>
+            <if test="record.activityContent != null" >
+                activity_content = #{record.activityContent,jdbcType=VARCHAR},
+            </if>
+            <if test="record.activityAddress != null" >
+                activity_address = #{record.activityAddress,jdbcType=VARCHAR},
+            </if>
+            <if test="record.activityIsDel != null" >
+                activity_is_del = #{record.activityIsDel,jdbcType=INTEGER},
+            </if>
+            <if test="record.activitySponsor != null" >
+                activity_sponsor = #{record.activitySponsor,jdbcType=VARCHAR},
+            </if>
+            <if test="record.activityHolder != null" >
+                activity_holder = #{record.activityHolder,jdbcType=VARCHAR},
+            </if>
+            <if test="record.activityPeopleNum != null" >
+                activity_people_num = #{record.activityPeopleNum,jdbcType=BIGINT},
+            </if>
+            <if test="record.activityStar != null" >
+                activity_star = #{record.activityStar,jdbcType=INTEGER},
+            </if>
+            <if test="record.activityAdminId != null" >
+                activity_admin_id = #{record.activityAdminId,jdbcType=BIGINT},
+            </if>
+            <if test="record.activityIsLongterm != null" >
+                activity_is_Longterm = #{record.activityIsLongterm,jdbcType=INTEGER},
+            </if>
+            <if test="record.activityIsLimit != null" >
+                activity_is_limit = #{record.activityIsLimit,jdbcType=INTEGER},
+            </if>
+            <if test="record.activityApplyStartTime != null" >
+                activity_apply_start_time = #{record.activityApplyStartTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="record.activityApplyEndTime != null" >
+                activity_apply_end_time = #{record.activityApplyEndTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="record.activityApplyPeopleNum != null" >
+                activity_apply_people_num = #{record.activityApplyPeopleNum,jdbcType=BIGINT},
+            </if>
+            <if test="record.activityIsCheck != null" >
+                activity_is_check = #{record.activityIsCheck,jdbcType=INTEGER},
+            </if>
+            <if test="record.activityLableId != null" >
+                activity_lable_id = #{record.activityLableId,jdbcType=BIGINT},
+            </if>
+        </set>
+        <if test="_parameter != null" >
+            <include refid="Update_By_Example_Where_Clause" />
+        </if>
+    </update>
+
+    <update id="updateByExample" parameterType="map" >
+        <!--
+        @mbggenerated
+        -->
+        update activity
+        set activity_id = #{record.activityId,jdbcType=BIGINT},
+            activity_name = #{record.activityName,jdbcType=VARCHAR},
+            activity_image_url = #{record.activityImageUrl,jdbcType=VARCHAR},
+            activity_createtime = #{record.activityCreatetime,jdbcType=TIMESTAMP},
+            activity_start_holding = #{record.activityStartHolding,jdbcType=TIMESTAMP},
+            activity_end_holding = #{record.activityEndHolding,jdbcType=TIMESTAMP},
+            activity_content = #{record.activityContent,jdbcType=VARCHAR},
+            activity_address = #{record.activityAddress,jdbcType=VARCHAR},
+            activity_is_del = #{record.activityIsDel,jdbcType=INTEGER},
+            activity_sponsor = #{record.activitySponsor,jdbcType=VARCHAR},
+            activity_holder = #{record.activityHolder,jdbcType=VARCHAR},
+            activity_people_num = #{record.activityPeopleNum,jdbcType=BIGINT},
+            activity_star = #{record.activityStar,jdbcType=INTEGER},
+            activity_admin_id = #{record.activityAdminId,jdbcType=BIGINT},
+            activity_is_Longterm = #{record.activityIsLongterm,jdbcType=INTEGER},
+            activity_is_limit = #{record.activityIsLimit,jdbcType=INTEGER},
+            activity_apply_start_time = #{record.activityApplyStartTime,jdbcType=TIMESTAMP},
+            activity_apply_end_time = #{record.activityApplyEndTime,jdbcType=TIMESTAMP},
+            activity_apply_people_num = #{record.activityApplyPeopleNum,jdbcType=BIGINT},
+            activity_is_check = #{record.activityIsCheck,jdbcType=INTEGER},
+            activity_lable_id = #{record.activityLableId,jdbcType=BIGINT}
+        <if test="_parameter != null" >
+            <include refid="Update_By_Example_Where_Clause" />
+        </if>
+    </update>
+
+    <update id="updateByPrimaryKeySelective" parameterType="com.cos_home.entity.Activity" >
+        <!--
+        @mbggenerated
+        -->
+        update activity
+        <set >
+            <if test="activityName != null" >
+                activity_name = #{activityName,jdbcType=VARCHAR},
+            </if>
+            <if test="activityImageUrl != null" >
+                activity_image_url = #{activityImageUrl,jdbcType=VARCHAR},
+            </if>
+            <if test="activityCreatetime != null" >
+                activity_createtime = #{activityCreatetime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="activityStartHolding != null" >
+                activity_start_holding = #{activityStartHolding,jdbcType=TIMESTAMP},
+            </if>
+            <if test="activityEndHolding != null" >
+                activity_end_holding = #{activityEndHolding,jdbcType=TIMESTAMP},
+            </if>
+            <if test="activityContent != null" >
+                activity_content = #{activityContent,jdbcType=VARCHAR},
+            </if>
+            <if test="activityAddress != null" >
+                activity_address = #{activityAddress,jdbcType=VARCHAR},
+            </if>
+            <if test="activityIsDel != null" >
+                activity_is_del = #{activityIsDel,jdbcType=INTEGER},
+            </if>
+            <if test="activitySponsor != null" >
+                activity_sponsor = #{activitySponsor,jdbcType=VARCHAR},
+            </if>
+            <if test="activityHolder != null" >
+                activity_holder = #{activityHolder,jdbcType=VARCHAR},
+            </if>
+            <if test="activityPeopleNum != null" >
+                activity_people_num = #{activityPeopleNum,jdbcType=BIGINT},
+            </if>
+            <if test="activityStar != null" >
+                activity_star = #{activityStar,jdbcType=INTEGER},
+            </if>
+            <if test="activityAdminId != null" >
+                activity_admin_id = #{activityAdminId,jdbcType=BIGINT},
+            </if>
+            <if test="activityIsLongterm != null" >
+                activity_is_Longterm = #{activityIsLongterm,jdbcType=INTEGER},
+            </if>
+            <if test="activityIsLimit != null" >
+                activity_is_limit = #{activityIsLimit,jdbcType=INTEGER},
+            </if>
+            <if test="activityApplyStartTime != null" >
+                activity_apply_start_time = #{activityApplyStartTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="activityApplyEndTime != null" >
+                activity_apply_end_time = #{activityApplyEndTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="activityApplyPeopleNum != null" >
+                activity_apply_people_num = #{activityApplyPeopleNum,jdbcType=BIGINT},
+            </if>
+            <if test="activityIsCheck != null" >
+                activity_is_check = #{activityIsCheck,jdbcType=INTEGER},
+            </if>
+            <if test="activityLableId != null" >
+                activity_lable_id = #{activityLableId,jdbcType=BIGINT},
+            </if>
+        </set>
+        where activity_id = #{activityId,jdbcType=BIGINT}
+    </update>
+
+    <update id="updateByPrimaryKey" parameterType="com.cos_home.entity.Activity" >
+        <!--
+        @mbggenerated
+        -->
+        update activity
+        set activity_name = #{activityName,jdbcType=VARCHAR},
+            activity_image_url = #{activityImageUrl,jdbcType=VARCHAR},
+            activity_createtime = #{activityCreatetime,jdbcType=TIMESTAMP},
+            activity_start_holding = #{activityStartHolding,jdbcType=TIMESTAMP},
+            activity_end_holding = #{activityEndHolding,jdbcType=TIMESTAMP},
+            activity_content = #{activityContent,jdbcType=VARCHAR},
+            activity_address = #{activityAddress,jdbcType=VARCHAR},
+            activity_is_del = #{activityIsDel,jdbcType=INTEGER},
+            activity_sponsor = #{activitySponsor,jdbcType=VARCHAR},
+            activity_holder = #{activityHolder,jdbcType=VARCHAR},
+            activity_people_num = #{activityPeopleNum,jdbcType=BIGINT},
+            activity_star = #{activityStar,jdbcType=INTEGER},
+            activity_admin_id = #{activityAdminId,jdbcType=BIGINT},
+            activity_is_Longterm = #{activityIsLongterm,jdbcType=INTEGER},
+            activity_is_limit = #{activityIsLimit,jdbcType=INTEGER},
+            activity_apply_start_time = #{activityApplyStartTime,jdbcType=TIMESTAMP},
+            activity_apply_end_time = #{activityApplyEndTime,jdbcType=TIMESTAMP},
+            activity_apply_people_num = #{activityApplyPeopleNum,jdbcType=BIGINT},
+            activity_is_check = #{activityIsCheck,jdbcType=INTEGER},
+            activity_lable_id = #{activityLableId,jdbcType=BIGINT}
+        where activity_id = #{activityId,jdbcType=BIGINT}
+    </update>
+</mapper>
