@@ -51,6 +51,12 @@ public class Dynamic implements Serializable {
      */
     private Long dynamicLableId;
 
+    /**
+     * 浏览量
+     * 表字段 : dynamic. dynamic_browse_records
+     */
+    private Long dynamicBrowseRecords;
+
     private static final long serialVersionUID = 1L;
 
     /**
@@ -177,5 +183,23 @@ public class Dynamic implements Serializable {
      */
     public void setDynamicLableId(Long dynamicLableId) {
         this.dynamicLableId = dynamicLableId;
+    }
+
+    /**
+     * 获取 浏览量 字段:dynamic. dynamic_browse_records
+     *
+     * @return dynamic. dynamic_browse_records, 浏览量
+     */
+    public Long getDynamicBrowseRecords() {
+        return dynamicBrowseRecords;
+    }
+
+    /**
+     * 设置 浏览量 字段:dynamic. dynamic_browse_records
+     *
+     * @param dynamicBrowseRecords the value for dynamic. dynamic_browse_records, 浏览量
+     */
+    public void setDynamicBrowseRecords(Long dynamicBrowseRecords) {
+        this.dynamicBrowseRecords = dynamicBrowseRecords;
     }
 }

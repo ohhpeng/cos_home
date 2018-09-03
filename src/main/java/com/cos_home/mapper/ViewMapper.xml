@@ -8,7 +8,7 @@
         -->
         <id column="view_id" property="viewId" jdbcType="BIGINT" />
         <result column="view_name" property="viewName" jdbcType="VARCHAR" />
-        <result column="view_introduce" property="viewIntroduce" jdbcType="VARCHAR" />
+        <result column="view_introduce" property="viewIntroduce" jdbcType="LONGVARCHAR" />
         <result column="view_address" property="viewAddress" jdbcType="VARCHAR" />
         <result column="view_spot" property="viewSpot" jdbcType="VARCHAR" />
         <result column="view_ticket_num" property="viewTicketNum" jdbcType="BIGINT" />
@@ -21,6 +21,7 @@
         <result column="view_open_time" property="viewOpenTime" jdbcType="TIMESTAMP" />
         <result column="view_close_time" property="viewCloseTime" jdbcType="TIMESTAMP" />
         <result column="view_instructions" property="viewInstructions" jdbcType="VARCHAR" />
+        <result column="view_visit_record" property="viewVisitRecord" jdbcType="BIGINT" />
     </resultMap>
 
     <sql id="Example_Where_Clause" >
@@ -95,7 +96,7 @@
         -->
         view_id, view_name, view_introduce, view_address, view_spot, view_ticket_num, view_image_url, 
         view_create_date, view_admin_id, view_is_del, view_update_date, view_lable_id, view_open_time, 
-        view_close_time, view_instructions
+        view_close_time, view_instructions, view_visit_record
     </sql>
 
     <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.cos_home.entity.ViewExample" >
@@ -155,14 +156,14 @@
             view_address, view_spot, view_ticket_num, 
             view_image_url, view_create_date, view_admin_id, 
             view_is_del, view_update_date, view_lable_id, 
-            view_open_time, view_close_time, view_instructions
-            )
-        values (#{viewId,jdbcType=BIGINT}, #{viewName,jdbcType=VARCHAR}, #{viewIntroduce,jdbcType=VARCHAR}, 
+            view_open_time, view_close_time, view_instructions, 
+            view_visit_record)
+        values (#{viewId,jdbcType=BIGINT}, #{viewName,jdbcType=VARCHAR}, #{viewIntroduce,jdbcType=LONGVARCHAR}, 
             #{viewAddress,jdbcType=VARCHAR}, #{viewSpot,jdbcType=VARCHAR}, #{viewTicketNum,jdbcType=BIGINT}, 
             #{viewImageUrl,jdbcType=VARCHAR}, #{viewCreateDate,jdbcType=TIMESTAMP}, #{viewAdminId,jdbcType=BIGINT}, 
             #{viewIsDel,jdbcType=INTEGER}, #{viewUpdateDate,jdbcType=TIMESTAMP}, #{viewLableId,jdbcType=BIGINT}, 
-            #{viewOpenTime,jdbcType=TIMESTAMP}, #{viewCloseTime,jdbcType=TIMESTAMP}, #{viewInstructions,jdbcType=VARCHAR}
-            )
+            #{viewOpenTime,jdbcType=TIMESTAMP}, #{viewCloseTime,jdbcType=TIMESTAMP}, #{viewInstructions,jdbcType=VARCHAR}, 
+            #{viewVisitRecord,jdbcType=BIGINT})
     </insert>
 
     <insert id="insertSelective" parameterType="com.cos_home.entity.View" >
@@ -216,6 +217,9 @@
             <if test="viewInstructions != null" >
                 view_instructions,
             </if>
+            <if test="viewVisitRecord != null" >
+                view_visit_record,
+            </if>
         </trim>
         <trim prefix="values (" suffix=")" suffixOverrides="," >
             <if test="viewId != null" >
@@ -225,7 +229,7 @@
                 #{viewName,jdbcType=VARCHAR},
             </if>
             <if test="viewIntroduce != null" >
-                #{viewIntroduce,jdbcType=VARCHAR},
+                #{viewIntroduce,jdbcType=LONGVARCHAR},
             </if>
             <if test="viewAddress != null" >
                 #{viewAddress,jdbcType=VARCHAR},
@@ -263,6 +267,9 @@
             <if test="viewInstructions != null" >
                 #{viewInstructions,jdbcType=VARCHAR},
             </if>
+            <if test="viewVisitRecord != null" >
+                #{viewVisitRecord,jdbcType=BIGINT},
+            </if>
         </trim>
     </insert>
 
@@ -289,7 +296,7 @@
                 view_name = #{record.viewName,jdbcType=VARCHAR},
             </if>
             <if test="record.viewIntroduce != null" >
-                view_introduce = #{record.viewIntroduce,jdbcType=VARCHAR},
+                view_introduce = #{record.viewIntroduce,jdbcType=LONGVARCHAR},
             </if>
             <if test="record.viewAddress != null" >
                 view_address = #{record.viewAddress,jdbcType=VARCHAR},
@@ -327,6 +334,9 @@
             <if test="record.viewInstructions != null" >
                 view_instructions = #{record.viewInstructions,jdbcType=VARCHAR},
             </if>
+            <if test="record.viewVisitRecord != null" >
+                view_visit_record = #{record.viewVisitRecord,jdbcType=BIGINT},
+            </if>
         </set>
         <if test="_parameter != null" >
             <include refid="Update_By_Example_Where_Clause" />
@@ -340,7 +350,7 @@
         update view
         set view_id = #{record.viewId,jdbcType=BIGINT},
             view_name = #{record.viewName,jdbcType=VARCHAR},
-            view_introduce = #{record.viewIntroduce,jdbcType=VARCHAR},
+            view_introduce = #{record.viewIntroduce,jdbcType=LONGVARCHAR},
             view_address = #{record.viewAddress,jdbcType=VARCHAR},
             view_spot = #{record.viewSpot,jdbcType=VARCHAR},
             view_ticket_num = #{record.viewTicketNum,jdbcType=BIGINT},
@@ -352,7 +362,8 @@
             view_lable_id = #{record.viewLableId,jdbcType=BIGINT},
             view_open_time = #{record.viewOpenTime,jdbcType=TIMESTAMP},
             view_close_time = #{record.viewCloseTime,jdbcType=TIMESTAMP},
-            view_instructions = #{record.viewInstructions,jdbcType=VARCHAR}
+            view_instructions = #{record.viewInstructions,jdbcType=VARCHAR},
+            view_visit_record = #{record.viewVisitRecord,jdbcType=BIGINT}
         <if test="_parameter != null" >
             <include refid="Update_By_Example_Where_Clause" />
         </if>
@@ -368,7 +379,7 @@
                 view_name = #{viewName,jdbcType=VARCHAR},
             </if>
             <if test="viewIntroduce != null" >
-                view_introduce = #{viewIntroduce,jdbcType=VARCHAR},
+                view_introduce = #{viewIntroduce,jdbcType=LONGVARCHAR},
             </if>
             <if test="viewAddress != null" >
                 view_address = #{viewAddress,jdbcType=VARCHAR},
@@ -406,6 +417,9 @@
             <if test="viewInstructions != null" >
                 view_instructions = #{viewInstructions,jdbcType=VARCHAR},
             </if>
+            <if test="viewVisitRecord != null" >
+                view_visit_record = #{viewVisitRecord,jdbcType=BIGINT},
+            </if>
         </set>
         where view_id = #{viewId,jdbcType=BIGINT}
     </update>
@@ -416,7 +430,7 @@
         -->
         update view
         set view_name = #{viewName,jdbcType=VARCHAR},
-            view_introduce = #{viewIntroduce,jdbcType=VARCHAR},
+            view_introduce = #{viewIntroduce,jdbcType=LONGVARCHAR},
             view_address = #{viewAddress,jdbcType=VARCHAR},
             view_spot = #{viewSpot,jdbcType=VARCHAR},
             view_ticket_num = #{viewTicketNum,jdbcType=BIGINT},
@@ -428,7 +442,8 @@
             view_lable_id = #{viewLableId,jdbcType=BIGINT},
             view_open_time = #{viewOpenTime,jdbcType=TIMESTAMP},
             view_close_time = #{viewCloseTime,jdbcType=TIMESTAMP},
-            view_instructions = #{viewInstructions,jdbcType=VARCHAR}
+            view_instructions = #{viewInstructions,jdbcType=VARCHAR},
+            view_visit_record = #{viewVisitRecord,jdbcType=BIGINT}
         where view_id = #{viewId,jdbcType=BIGINT}
     </update>
 </mapper>

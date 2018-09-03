@@ -83,4 +83,12 @@ public class ViewServiceImpl implements ViewService {
 		return false;
 	}
 
+	@Override
+	public List<View> viewList() throws Exception {
+		ViewExample example=new ViewExample();
+		example.setLimitStart(1);
+		example.setLimitEnd(6);
+		return viewMapper.selectByExample(example);
+	}
+
 }

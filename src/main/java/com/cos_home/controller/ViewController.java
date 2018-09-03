@@ -9,6 +9,7 @@ import javax.annotation.Resource;
 
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -41,12 +42,16 @@ public class ViewController {
 	 * @date 2018-08-29 23:09
 	 */
 	@RequestMapping(value = "viewList", method = RequestMethod.GET)
-	public @ResponseBody Map<String, Object> viewList(String str, @RequestParam(defaultValue = "10") Integer pageSize,
-			@RequestParam(defaultValue = "1") Integer pageIndex) throws Exception {
+	public @ResponseBody String viewList(String str, @RequestParam(defaultValue = "10") Integer pageSize,
+			@RequestParam(defaultValue = "1") Integer pageIndex,Model model) throws Exception {
 
 		List<View> parkList = viewService.findViewList(pageSize, pageIndex, str);
-
-		return ListPaginationUtil.pagination(parkList, pageIndex, pageSize);
+		Map<String, Object> map=new HashMap<String,Object>();
+		map=ListPaginationUtil.pagination(parkList, pageIndex, pageSize);
+		
+		model.addAttribute("map", map);
+		
+		return "viewList";
 	}
 
 	/**
@@ -59,15 +64,14 @@ public class ViewController {
 	 * @throws Exception
 	 * @date 2018-08-29 23:14
 	 */
-	@RequestMapping(value = "viewDetail", method = RequestMethod.GET)
-	public @ResponseBody Map<String, Object> viewDetail(Long viewId) throws Exception {
-		Map<String, Object> map = new HashMap<String, Object>();
-
-		View view = viewService.findViewById(viewId);
-
-		map.put("code", 1);
-		map.put("view", view);
-		map.put("message", "查看详情成功");
-		return map;
+	@RequestMapping(value = "viewInfo", method = RequestMethod.GET)
+	public String viewDetail(Long viewId,Model model) throws Exception {
+		View view = viewService.findViewById(viewId);//景点详情
+		List<View> viewList=viewService.viewList();
+		
+		model.addAttribute("view", view);
+		model.addAttribute("viewList", viewList);
+		
+		return "front/viewDetail";
 	}
 }

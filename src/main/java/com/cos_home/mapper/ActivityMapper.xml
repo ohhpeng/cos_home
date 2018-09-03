@@ -12,7 +12,7 @@
         <result column="activity_createtime" property="activityCreatetime" jdbcType="TIMESTAMP" />
         <result column="activity_start_holding" property="activityStartHolding" jdbcType="TIMESTAMP" />
         <result column="activity_end_holding" property="activityEndHolding" jdbcType="TIMESTAMP" />
-        <result column="activity_content" property="activityContent" jdbcType="VARCHAR" />
+        <result column="activity_content" property="activityContent" jdbcType="LONGVARCHAR" />
         <result column="activity_address" property="activityAddress" jdbcType="VARCHAR" />
         <result column="activity_is_del" property="activityIsDel" jdbcType="INTEGER" />
         <result column="activity_sponsor" property="activitySponsor" jdbcType="VARCHAR" />
@@ -27,6 +27,7 @@
         <result column="activity_apply_people_num" property="activityApplyPeopleNum" jdbcType="BIGINT" />
         <result column="activity_is_check" property="activityIsCheck" jdbcType="INTEGER" />
         <result column="activity_lable_id" property="activityLableId" jdbcType="BIGINT" />
+        <result column="activity_browse_records" property="activityBrowseRecords" jdbcType="BIGINT" />
     </resultMap>
 
     <sql id="Example_Where_Clause" >
@@ -103,7 +104,7 @@
         activity_end_holding, activity_content, activity_address, activity_is_del, activity_sponsor, 
         activity_holder, activity_people_num, activity_star, activity_admin_id, activity_is_Longterm, 
         activity_is_limit, activity_apply_start_time, activity_apply_end_time, activity_apply_people_num, 
-        activity_is_check, activity_lable_id
+        activity_is_check, activity_lable_id, activity_browse_records
     </sql>
 
     <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.cos_home.entity.ActivityExample" >
@@ -167,16 +168,16 @@
             activity_admin_id, activity_is_Longterm, activity_is_limit, 
             activity_apply_start_time, activity_apply_end_time, 
             activity_apply_people_num, activity_is_check, 
-            activity_lable_id)
+            activity_lable_id, activity_browse_records)
         values (#{activityId,jdbcType=BIGINT}, #{activityName,jdbcType=VARCHAR}, #{activityImageUrl,jdbcType=VARCHAR}, 
             #{activityCreatetime,jdbcType=TIMESTAMP}, #{activityStartHolding,jdbcType=TIMESTAMP}, 
-            #{activityEndHolding,jdbcType=TIMESTAMP}, #{activityContent,jdbcType=VARCHAR}, 
+            #{activityEndHolding,jdbcType=TIMESTAMP}, #{activityContent,jdbcType=LONGVARCHAR}, 
             #{activityAddress,jdbcType=VARCHAR}, #{activityIsDel,jdbcType=INTEGER}, #{activitySponsor,jdbcType=VARCHAR}, 
             #{activityHolder,jdbcType=VARCHAR}, #{activityPeopleNum,jdbcType=BIGINT}, #{activityStar,jdbcType=INTEGER}, 
             #{activityAdminId,jdbcType=BIGINT}, #{activityIsLongterm,jdbcType=INTEGER}, #{activityIsLimit,jdbcType=INTEGER}, 
             #{activityApplyStartTime,jdbcType=TIMESTAMP}, #{activityApplyEndTime,jdbcType=TIMESTAMP}, 
             #{activityApplyPeopleNum,jdbcType=BIGINT}, #{activityIsCheck,jdbcType=INTEGER}, 
-            #{activityLableId,jdbcType=BIGINT})
+            #{activityLableId,jdbcType=BIGINT}, #{activityBrowseRecords,jdbcType=BIGINT})
     </insert>
 
     <insert id="insertSelective" parameterType="com.cos_home.entity.Activity" >
@@ -248,6 +249,9 @@
             <if test="activityLableId != null" >
                 activity_lable_id,
             </if>
+            <if test="activityBrowseRecords != null" >
+                activity_browse_records,
+            </if>
         </trim>
         <trim prefix="values (" suffix=")" suffixOverrides="," >
             <if test="activityId != null" >
@@ -269,7 +273,7 @@
                 #{activityEndHolding,jdbcType=TIMESTAMP},
             </if>
             <if test="activityContent != null" >
-                #{activityContent,jdbcType=VARCHAR},
+                #{activityContent,jdbcType=LONGVARCHAR},
             </if>
             <if test="activityAddress != null" >
                 #{activityAddress,jdbcType=VARCHAR},
@@ -313,6 +317,9 @@
             <if test="activityLableId != null" >
                 #{activityLableId,jdbcType=BIGINT},
             </if>
+            <if test="activityBrowseRecords != null" >
+                #{activityBrowseRecords,jdbcType=BIGINT},
+            </if>
         </trim>
     </insert>
 
@@ -351,7 +358,7 @@
                 activity_end_holding = #{record.activityEndHolding,jdbcType=TIMESTAMP},
             </if>
             <if test="record.activityContent != null" >
-                activity_content = #{record.activityContent,jdbcType=VARCHAR},
+                activity_content = #{record.activityContent,jdbcType=LONGVARCHAR},
             </if>
             <if test="record.activityAddress != null" >
                 activity_address = #{record.activityAddress,jdbcType=VARCHAR},
@@ -395,6 +402,9 @@
             <if test="record.activityLableId != null" >
                 activity_lable_id = #{record.activityLableId,jdbcType=BIGINT},
             </if>
+            <if test="record.activityBrowseRecords != null" >
+                activity_browse_records = #{record.activityBrowseRecords,jdbcType=BIGINT},
+            </if>
         </set>
         <if test="_parameter != null" >
             <include refid="Update_By_Example_Where_Clause" />
@@ -412,7 +422,7 @@
             activity_createtime = #{record.activityCreatetime,jdbcType=TIMESTAMP},
             activity_start_holding = #{record.activityStartHolding,jdbcType=TIMESTAMP},
             activity_end_holding = #{record.activityEndHolding,jdbcType=TIMESTAMP},
-            activity_content = #{record.activityContent,jdbcType=VARCHAR},
+            activity_content = #{record.activityContent,jdbcType=LONGVARCHAR},
             activity_address = #{record.activityAddress,jdbcType=VARCHAR},
             activity_is_del = #{record.activityIsDel,jdbcType=INTEGER},
             activity_sponsor = #{record.activitySponsor,jdbcType=VARCHAR},
@@ -426,7 +436,8 @@
             activity_apply_end_time = #{record.activityApplyEndTime,jdbcType=TIMESTAMP},
             activity_apply_people_num = #{record.activityApplyPeopleNum,jdbcType=BIGINT},
             activity_is_check = #{record.activityIsCheck,jdbcType=INTEGER},
-            activity_lable_id = #{record.activityLableId,jdbcType=BIGINT}
+            activity_lable_id = #{record.activityLableId,jdbcType=BIGINT},
+            activity_browse_records = #{record.activityBrowseRecords,jdbcType=BIGINT}
         <if test="_parameter != null" >
             <include refid="Update_By_Example_Where_Clause" />
         </if>
@@ -454,7 +465,7 @@
                 activity_end_holding = #{activityEndHolding,jdbcType=TIMESTAMP},
             </if>
             <if test="activityContent != null" >
-                activity_content = #{activityContent,jdbcType=VARCHAR},
+                activity_content = #{activityContent,jdbcType=LONGVARCHAR},
             </if>
             <if test="activityAddress != null" >
                 activity_address = #{activityAddress,jdbcType=VARCHAR},
@@ -498,6 +509,9 @@
             <if test="activityLableId != null" >
                 activity_lable_id = #{activityLableId,jdbcType=BIGINT},
             </if>
+            <if test="activityBrowseRecords != null" >
+                activity_browse_records = #{activityBrowseRecords,jdbcType=BIGINT},
+            </if>
         </set>
         where activity_id = #{activityId,jdbcType=BIGINT}
     </update>
@@ -512,7 +526,7 @@
             activity_createtime = #{activityCreatetime,jdbcType=TIMESTAMP},
             activity_start_holding = #{activityStartHolding,jdbcType=TIMESTAMP},
             activity_end_holding = #{activityEndHolding,jdbcType=TIMESTAMP},
-            activity_content = #{activityContent,jdbcType=VARCHAR},
+            activity_content = #{activityContent,jdbcType=LONGVARCHAR},
             activity_address = #{activityAddress,jdbcType=VARCHAR},
             activity_is_del = #{activityIsDel,jdbcType=INTEGER},
             activity_sponsor = #{activitySponsor,jdbcType=VARCHAR},
@@ -526,7 +540,8 @@
             activity_apply_end_time = #{activityApplyEndTime,jdbcType=TIMESTAMP},
             activity_apply_people_num = #{activityApplyPeopleNum,jdbcType=BIGINT},
             activity_is_check = #{activityIsCheck,jdbcType=INTEGER},
-            activity_lable_id = #{activityLableId,jdbcType=BIGINT}
+            activity_lable_id = #{activityLableId,jdbcType=BIGINT},
+            activity_browse_records = #{activityBrowseRecords,jdbcType=BIGINT}
         where activity_id = #{activityId,jdbcType=BIGINT}
     </update>
 </mapper>

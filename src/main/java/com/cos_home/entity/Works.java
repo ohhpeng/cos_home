@@ -81,6 +81,12 @@ public class Works implements Serializable {
      */
     private Long worksLableId;
 
+    /**
+     * 作品浏览量
+     * 表字段 : works.works_browse_records
+     */
+    private Long worksBrowseRecords;
+
     private static final long serialVersionUID = 1L;
 
     /**
@@ -297,5 +303,23 @@ public class Works implements Serializable {
      */
     public void setWorksLableId(Long worksLableId) {
         this.worksLableId = worksLableId;
+    }
+
+    /**
+     * 获取 作品浏览量 字段:works.works_browse_records
+     *
+     * @return works.works_browse_records, 作品浏览量
+     */
+    public Long getWorksBrowseRecords() {
+        return worksBrowseRecords;
+    }
+
+    /**
+     * 设置 作品浏览量 字段:works.works_browse_records
+     *
+     * @param worksBrowseRecords the value for works.works_browse_records, 作品浏览量
+     */
+    public void setWorksBrowseRecords(Long worksBrowseRecords) {
+        this.worksBrowseRecords = worksBrowseRecords;
     }
 }

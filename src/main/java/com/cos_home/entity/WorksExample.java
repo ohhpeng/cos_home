@@ -944,6 +944,66 @@ public class WorksExample {
             addCriterion("works_lable_id not between", value1, value2, "worksLableId");
             return (Criteria) this;
         }
+
+        public Criteria andWorksBrowseRecordsIsNull() {
+            addCriterion("works_browse_records is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andWorksBrowseRecordsIsNotNull() {
+            addCriterion("works_browse_records is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andWorksBrowseRecordsEqualTo(Long value) {
+            addCriterion("works_browse_records =", value, "worksBrowseRecords");
+            return (Criteria) this;
+        }
+
+        public Criteria andWorksBrowseRecordsNotEqualTo(Long value) {
+            addCriterion("works_browse_records <>", value, "worksBrowseRecords");
+            return (Criteria) this;
+        }
+
+        public Criteria andWorksBrowseRecordsGreaterThan(Long value) {
+            addCriterion("works_browse_records >", value, "worksBrowseRecords");
+            return (Criteria) this;
+        }
+
+        public Criteria andWorksBrowseRecordsGreaterThanOrEqualTo(Long value) {
+            addCriterion("works_browse_records >=", value, "worksBrowseRecords");
+            return (Criteria) this;
+        }
+
+        public Criteria andWorksBrowseRecordsLessThan(Long value) {
+            addCriterion("works_browse_records <", value, "worksBrowseRecords");
+            return (Criteria) this;
+        }
+
+        public Criteria andWorksBrowseRecordsLessThanOrEqualTo(Long value) {
+            addCriterion("works_browse_records <=", value, "worksBrowseRecords");
+            return (Criteria) this;
+        }
+
+        public Criteria andWorksBrowseRecordsIn(List<Long> values) {
+            addCriterion("works_browse_records in", values, "worksBrowseRecords");
+            return (Criteria) this;
+        }
+
+        public Criteria andWorksBrowseRecordsNotIn(List<Long> values) {
+            addCriterion("works_browse_records not in", values, "worksBrowseRecords");
+            return (Criteria) this;
+        }
+
+        public Criteria andWorksBrowseRecordsBetween(Long value1, Long value2) {
+            addCriterion("works_browse_records between", value1, value2, "worksBrowseRecords");
+            return (Criteria) this;
+        }
+
+        public Criteria andWorksBrowseRecordsNotBetween(Long value1, Long value2) {
+            addCriterion("works_browse_records not between", value1, value2, "worksBrowseRecords");
+            return (Criteria) this;
+        }
     }
 
     /**

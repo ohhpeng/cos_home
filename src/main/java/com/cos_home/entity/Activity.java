@@ -135,6 +135,12 @@ public class Activity implements Serializable {
      */
     private Long activityLableId;
 
+    /**
+     * 活动浏览量
+     * 表字段 : activity.activity_browse_records
+     */
+    private Long activityBrowseRecords;
+
     private static final long serialVersionUID = 1L;
 
     /**
@@ -513,5 +519,23 @@ public class Activity implements Serializable {
      */
     public void setActivityLableId(Long activityLableId) {
         this.activityLableId = activityLableId;
+    }
+
+    /**
+     * 获取 活动浏览量 字段:activity.activity_browse_records
+     *
+     * @return activity.activity_browse_records, 活动浏览量
+     */
+    public Long getActivityBrowseRecords() {
+        return activityBrowseRecords;
+    }
+
+    /**
+     * 设置 活动浏览量 字段:activity.activity_browse_records
+     *
+     * @param activityBrowseRecords the value for activity.activity_browse_records, 活动浏览量
+     */
+    public void setActivityBrowseRecords(Long activityBrowseRecords) {
+        this.activityBrowseRecords = activityBrowseRecords;
     }
 }

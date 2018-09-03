@@ -624,6 +624,66 @@ public class DynamicExample {
             addCriterion("dynamic_lable_id not between", value1, value2, "dynamicLableId");
             return (Criteria) this;
         }
+
+        public Criteria andDynamicBrowseRecordsIsNull() {
+            addCriterion("\" dynamic_browse_records\" is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andDynamicBrowseRecordsIsNotNull() {
+            addCriterion("\" dynamic_browse_records\" is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andDynamicBrowseRecordsEqualTo(Long value) {
+            addCriterion("\" dynamic_browse_records\" =", value, "dynamicBrowseRecords");
+            return (Criteria) this;
+        }
+
+        public Criteria andDynamicBrowseRecordsNotEqualTo(Long value) {
+            addCriterion("\" dynamic_browse_records\" <>", value, "dynamicBrowseRecords");
+            return (Criteria) this;
+        }
+
+        public Criteria andDynamicBrowseRecordsGreaterThan(Long value) {
+            addCriterion("\" dynamic_browse_records\" >", value, "dynamicBrowseRecords");
+            return (Criteria) this;
+        }
+
+        public Criteria andDynamicBrowseRecordsGreaterThanOrEqualTo(Long value) {
+            addCriterion("\" dynamic_browse_records\" >=", value, "dynamicBrowseRecords");
+            return (Criteria) this;
+        }
+
+        public Criteria andDynamicBrowseRecordsLessThan(Long value) {
+            addCriterion("\" dynamic_browse_records\" <", value, "dynamicBrowseRecords");
+            return (Criteria) this;
+        }
+
+        public Criteria andDynamicBrowseRecordsLessThanOrEqualTo(Long value) {
+            addCriterion("\" dynamic_browse_records\" <=", value, "dynamicBrowseRecords");
+            return (Criteria) this;
+        }
+
+        public Criteria andDynamicBrowseRecordsIn(List<Long> values) {
+            addCriterion("\" dynamic_browse_records\" in", values, "dynamicBrowseRecords");
+            return (Criteria) this;
+        }
+
+        public Criteria andDynamicBrowseRecordsNotIn(List<Long> values) {
+            addCriterion("\" dynamic_browse_records\" not in", values, "dynamicBrowseRecords");
+            return (Criteria) this;
+        }
+
+        public Criteria andDynamicBrowseRecordsBetween(Long value1, Long value2) {
+            addCriterion("\" dynamic_browse_records\" between", value1, value2, "dynamicBrowseRecords");
+            return (Criteria) this;
+        }
+
+        public Criteria andDynamicBrowseRecordsNotBetween(Long value1, Long value2) {
+            addCriterion("\" dynamic_browse_records\" not between", value1, value2, "dynamicBrowseRecords");
+            return (Criteria) this;
+        }
     }
 
     /**

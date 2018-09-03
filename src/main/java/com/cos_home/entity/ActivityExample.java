@@ -1504,6 +1504,66 @@ public class ActivityExample {
             addCriterion("activity_lable_id not between", value1, value2, "activityLableId");
             return (Criteria) this;
         }
+
+        public Criteria andActivityBrowseRecordsIsNull() {
+            addCriterion("activity_browse_records is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andActivityBrowseRecordsIsNotNull() {
+            addCriterion("activity_browse_records is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andActivityBrowseRecordsEqualTo(Long value) {
+            addCriterion("activity_browse_records =", value, "activityBrowseRecords");
+            return (Criteria) this;
+        }
+
+        public Criteria andActivityBrowseRecordsNotEqualTo(Long value) {
+            addCriterion("activity_browse_records <>", value, "activityBrowseRecords");
+            return (Criteria) this;
+        }
+
+        public Criteria andActivityBrowseRecordsGreaterThan(Long value) {
+            addCriterion("activity_browse_records >", value, "activityBrowseRecords");
+            return (Criteria) this;
+        }
+
+        public Criteria andActivityBrowseRecordsGreaterThanOrEqualTo(Long value) {
+            addCriterion("activity_browse_records >=", value, "activityBrowseRecords");
+            return (Criteria) this;
+        }
+
+        public Criteria andActivityBrowseRecordsLessThan(Long value) {
+            addCriterion("activity_browse_records <", value, "activityBrowseRecords");
+            return (Criteria) this;
+        }
+
+        public Criteria andActivityBrowseRecordsLessThanOrEqualTo(Long value) {
+            addCriterion("activity_browse_records <=", value, "activityBrowseRecords");
+            return (Criteria) this;
+        }
+
+        public Criteria andActivityBrowseRecordsIn(List<Long> values) {
+            addCriterion("activity_browse_records in", values, "activityBrowseRecords");
+            return (Criteria) this;
+        }
+
+        public Criteria andActivityBrowseRecordsNotIn(List<Long> values) {
+            addCriterion("activity_browse_records not in", values, "activityBrowseRecords");
+            return (Criteria) this;
+        }
+
+        public Criteria andActivityBrowseRecordsBetween(Long value1, Long value2) {
+            addCriterion("activity_browse_records between", value1, value2, "activityBrowseRecords");
+            return (Criteria) this;
+        }
+
+        public Criteria andActivityBrowseRecordsNotBetween(Long value1, Long value2) {
+            addCriterion("activity_browse_records not between", value1, value2, "activityBrowseRecords");
+            return (Criteria) this;
+        }
     }
 
     /**

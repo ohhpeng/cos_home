@@ -1144,6 +1144,66 @@ public class ViewExample {
             addCriterion("view_instructions not between", value1, value2, "viewInstructions");
             return (Criteria) this;
         }
+
+        public Criteria andViewVisitRecordIsNull() {
+            addCriterion("view_visit_record is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andViewVisitRecordIsNotNull() {
+            addCriterion("view_visit_record is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andViewVisitRecordEqualTo(Long value) {
+            addCriterion("view_visit_record =", value, "viewVisitRecord");
+            return (Criteria) this;
+        }
+
+        public Criteria andViewVisitRecordNotEqualTo(Long value) {
+            addCriterion("view_visit_record <>", value, "viewVisitRecord");
+            return (Criteria) this;
+        }
+
+        public Criteria andViewVisitRecordGreaterThan(Long value) {
+            addCriterion("view_visit_record >", value, "viewVisitRecord");
+            return (Criteria) this;
+        }
+
+        public Criteria andViewVisitRecordGreaterThanOrEqualTo(Long value) {
+            addCriterion("view_visit_record >=", value, "viewVisitRecord");
+            return (Criteria) this;
+        }
+
+        public Criteria andViewVisitRecordLessThan(Long value) {
+            addCriterion("view_visit_record <", value, "viewVisitRecord");
+            return (Criteria) this;
+        }
+
+        public Criteria andViewVisitRecordLessThanOrEqualTo(Long value) {
+            addCriterion("view_visit_record <=", value, "viewVisitRecord");
+            return (Criteria) this;
+        }
+
+        public Criteria andViewVisitRecordIn(List<Long> values) {
+            addCriterion("view_visit_record in", values, "viewVisitRecord");
+            return (Criteria) this;
+        }
+
+        public Criteria andViewVisitRecordNotIn(List<Long> values) {
+            addCriterion("view_visit_record not in", values, "viewVisitRecord");
+            return (Criteria) this;
+        }
+
+        public Criteria andViewVisitRecordBetween(Long value1, Long value2) {
+            addCriterion("view_visit_record between", value1, value2, "viewVisitRecord");
+            return (Criteria) this;
+        }
+
+        public Criteria andViewVisitRecordNotBetween(Long value1, Long value2) {
+            addCriterion("view_visit_record not between", value1, value2, "viewVisitRecord");
+            return (Criteria) this;
+        }
     }
 
     /**

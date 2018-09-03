@@ -77,4 +77,13 @@ public interface ViewService {
 	 * @date 2018-08-28 22:06
 	 */
 	public boolean softDeleteView(View view) throws Exception;
+	
+	/**
+	 * 人气景点推荐
+	 * @author pengzhen
+	 * @return
+	 * @throws Exception
+	 * @date 2018-09-03 11:32
+	 */
+	public List<View> viewList() throws Exception;
 }

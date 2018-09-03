@@ -99,6 +99,12 @@ public class View implements Serializable {
      */
     private String viewInstructions;
 
+    /**
+     * 浏览量
+     * 表字段 : view.view_visit_record
+     */
+    private Long viewVisitRecord;
+
     private static final long serialVersionUID = 1L;
 
     /**
@@ -369,5 +375,23 @@ public class View implements Serializable {
      */
     public void setViewInstructions(String viewInstructions) {
         this.viewInstructions = viewInstructions == null ? null : viewInstructions.trim();
+    }
+
+    /**
+     * 获取 浏览量 字段:view.view_visit_record
+     *
+     * @return view.view_visit_record, 浏览量
+     */
+    public Long getViewVisitRecord() {
+        return viewVisitRecord;
+    }
+
+    /**
+     * 设置 浏览量 字段:view.view_visit_record
+     *
+     * @param viewVisitRecord the value for view.view_visit_record, 浏览量
+     */
+    public void setViewVisitRecord(Long viewVisitRecord) {
+        this.viewVisitRecord = viewVisitRecord;
     }
 }

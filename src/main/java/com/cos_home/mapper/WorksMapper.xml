@@ -18,6 +18,7 @@
         <result column="works_popularity" property="worksPopularity" jdbcType="BIGINT" />
         <result column="works_user_id" property="worksUserId" jdbcType="BIGINT" />
         <result column="works_lable_id" property="worksLableId" jdbcType="BIGINT" />
+        <result column="works_browse_records" property="worksBrowseRecords" jdbcType="BIGINT" />
     </resultMap>
 
     <sql id="Example_Where_Clause" >
@@ -92,7 +93,7 @@
         -->
         works_id, works_name, works_introduce, works_image_url, works_is_del, works_createtime, 
         works_publishtime, works_is_pass, works_reason, works_popularity, works_user_id, 
-        works_lable_id
+        works_lable_id, works_browse_records
     </sql>
 
     <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.cos_home.entity.WorksExample" >
@@ -151,13 +152,13 @@
         insert into works (works_id, works_name, works_introduce, 
             works_image_url, works_is_del, works_createtime, 
             works_publishtime, works_is_pass, works_reason, 
-            works_popularity, works_user_id, works_lable_id
-            )
+            works_popularity, works_user_id, works_lable_id, 
+            works_browse_records)
         values (#{worksId,jdbcType=BIGINT}, #{worksName,jdbcType=VARCHAR}, #{worksIntroduce,jdbcType=VARCHAR}, 
             #{worksImageUrl,jdbcType=VARCHAR}, #{worksIsDel,jdbcType=INTEGER}, #{worksCreatetime,jdbcType=TIMESTAMP}, 
             #{worksPublishtime,jdbcType=TIMESTAMP}, #{worksIsPass,jdbcType=INTEGER}, #{worksReason,jdbcType=VARCHAR}, 
-            #{worksPopularity,jdbcType=BIGINT}, #{worksUserId,jdbcType=BIGINT}, #{worksLableId,jdbcType=BIGINT}
-            )
+            #{worksPopularity,jdbcType=BIGINT}, #{worksUserId,jdbcType=BIGINT}, #{worksLableId,jdbcType=BIGINT}, 
+            #{worksBrowseRecords,jdbcType=BIGINT})
     </insert>
 
     <insert id="insertSelective" parameterType="com.cos_home.entity.Works" >
@@ -202,6 +203,9 @@
             <if test="worksLableId != null" >
                 works_lable_id,
             </if>
+            <if test="worksBrowseRecords != null" >
+                works_browse_records,
+            </if>
         </trim>
         <trim prefix="values (" suffix=")" suffixOverrides="," >
             <if test="worksId != null" >
@@ -239,6 +243,9 @@
             </if>
             <if test="worksLableId != null" >
                 #{worksLableId,jdbcType=BIGINT},
+            </if>
+            <if test="worksBrowseRecords != null" >
+                #{worksBrowseRecords,jdbcType=BIGINT},
             </if>
         </trim>
     </insert>
@@ -295,6 +302,9 @@
             <if test="record.worksLableId != null" >
                 works_lable_id = #{record.worksLableId,jdbcType=BIGINT},
             </if>
+            <if test="record.worksBrowseRecords != null" >
+                works_browse_records = #{record.worksBrowseRecords,jdbcType=BIGINT},
+            </if>
         </set>
         <if test="_parameter != null" >
             <include refid="Update_By_Example_Where_Clause" />
@@ -317,7 +327,8 @@
             works_reason = #{record.worksReason,jdbcType=VARCHAR},
             works_popularity = #{record.worksPopularity,jdbcType=BIGINT},
             works_user_id = #{record.worksUserId,jdbcType=BIGINT},
-            works_lable_id = #{record.worksLableId,jdbcType=BIGINT}
+            works_lable_id = #{record.worksLableId,jdbcType=BIGINT},
+            works_browse_records = #{record.worksBrowseRecords,jdbcType=BIGINT}
         <if test="_parameter != null" >
             <include refid="Update_By_Example_Where_Clause" />
         </if>
@@ -362,6 +373,9 @@
             <if test="worksLableId != null" >
                 works_lable_id = #{worksLableId,jdbcType=BIGINT},
             </if>
+            <if test="worksBrowseRecords != null" >
+                works_browse_records = #{worksBrowseRecords,jdbcType=BIGINT},
+            </if>
         </set>
         where works_id = #{worksId,jdbcType=BIGINT}
     </update>
@@ -381,7 +395,8 @@
             works_reason = #{worksReason,jdbcType=VARCHAR},
             works_popularity = #{worksPopularity,jdbcType=BIGINT},
             works_user_id = #{worksUserId,jdbcType=BIGINT},
-            works_lable_id = #{worksLableId,jdbcType=BIGINT}
+            works_lable_id = #{worksLableId,jdbcType=BIGINT},
+            works_browse_records = #{worksBrowseRecords,jdbcType=BIGINT}
         where works_id = #{worksId,jdbcType=BIGINT}
     </update>
 </mapper>
